@@ -9,6 +9,7 @@ An application to help children learn how to save, manage and make smart decisio
 [TODO: Add name via commit]
 
 * Stanley Cao
+* Stephany Ceron
 
 ## Features
 
