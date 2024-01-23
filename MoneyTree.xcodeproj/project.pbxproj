@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48E549452B6059BB008184BA /* MoneyTreeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549442B6059BB008184BA /* MoneyTreeApp.swift */; };
+		48E549472B6059BB008184BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549462B6059BB008184BA /* ContentView.swift */; };
+		48E549492B6059BB008184BA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549482B6059BB008184BA /* Item.swift */; };
+		48E5494B2B6059BD008184BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48E5494A2B6059BD008184BA /* Assets.xcassets */; };
+		48E5494E2B6059BD008184BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48E5494D2B6059BD008184BA /* Preview Assets.xcassets */; };
+		48E549582B6059BD008184BA /* MoneyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549572B6059BD008184BA /* MoneyTreeTests.swift */; };
+		48E549622B6059BD008184BA /* MoneyTreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549612B6059BD008184BA /* MoneyTreeUITests.swift */; };
+		48E549642B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549632B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		48E549542B6059BD008184BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E549392B6059BB008184BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48E549402B6059BB008184BA;
+			remoteInfo = MoneyTree;
+		};
+		48E5495E2B6059BD008184BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E549392B6059BB008184BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48E549402B6059BB008184BA;
+			remoteInfo = MoneyTree;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		48E549412B6059BB008184BA /* MoneyTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48E549442B6059BB008184BA /* MoneyTreeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTreeApp.swift; sourceTree = "<group>"; };
+		48E549462B6059BB008184BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		48E549482B6059BB008184BA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		48E5494A2B6059BD008184BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		48E5494D2B6059BD008184BA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		48E549532B6059BD008184BA /* MoneyTreeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyTreeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48E549572B6059BD008184BA /* MoneyTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTreeTests.swift; sourceTree = "<group>"; };
+		48E5495D2B6059BD008184BA /* MoneyTreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyTreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48E549612B6059BD008184BA /* MoneyTreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTreeUITests.swift; sourceTree = "<group>"; };
+		48E549632B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTreeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48E5493E2B6059BB008184BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48E549502B6059BD008184BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48E5495A2B6059BD008184BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48E549382B6059BB008184BA = {
+			isa = PBXGroup;
+			children = (
+				48E549432B6059BB008184BA /* MoneyTree */,
+				48E549562B6059BD008184BA /* MoneyTreeTests */,
+				48E549602B6059BD008184BA /* MoneyTreeUITests */,
+				48E549422B6059BB008184BA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		48E549422B6059BB008184BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48E549412B6059BB008184BA /* MoneyTree.app */,
+				48E549532B6059BD008184BA /* MoneyTreeTests.xctest */,
+				48E5495D2B6059BD008184BA /* MoneyTreeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48E549432B6059BB008184BA /* MoneyTree */ = {
+			isa = PBXGroup;
+			children = (
+				48E549442B6059BB008184BA /* MoneyTreeApp.swift */,
+				48E549462B6059BB008184BA /* ContentView.swift */,
+				48E549482B6059BB008184BA /* Item.swift */,
+				48E5494A2B6059BD008184BA /* Assets.xcassets */,
+				48E5494C2B6059BD008184BA /* Preview Content */,
+			);
+			path = MoneyTree;
+			sourceTree = "<group>";
+		};
+		48E5494C2B6059BD008184BA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				48E5494D2B6059BD008184BA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		48E549562B6059BD008184BA /* MoneyTreeTests */ = {
+			isa = PBXGroup;
+			children = (
+				48E549572B6059BD008184BA /* MoneyTreeTests.swift */,
+			);
+			path = MoneyTreeTests;
+			sourceTree = "<group>";
+		};
+		48E549602B6059BD008184BA /* MoneyTreeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				48E549612B6059BD008184BA /* MoneyTreeUITests.swift */,
+				48E549632B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift */,
+			);
+			path = MoneyTreeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48E549402B6059BB008184BA /* MoneyTree */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48E549672B6059BD008184BA /* Build configuration list for PBXNativeTarget "MoneyTree" */;
+			buildPhases = (
+				48E5493D2B6059BB008184BA /* Sources */,
+				48E5493E2B6059BB008184BA /* Frameworks */,
+				48E5493F2B6059BB008184BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoneyTree;
+			productName = MoneyTree;
+			productReference = 48E549412B6059BB008184BA /* MoneyTree.app */;
+			productType = "com.apple.product-type.application";
+		};
+		48E549522B6059BD008184BA /* MoneyTreeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48E5496A2B6059BD008184BA /* Build configuration list for PBXNativeTarget "MoneyTreeTests" */;
+			buildPhases = (
+				48E5494F2B6059BD008184BA /* Sources */,
+				48E549502B6059BD008184BA /* Frameworks */,
+				48E549512B6059BD008184BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48E549552B6059BD008184BA /* PBXTargetDependency */,
+			);
+			name = MoneyTreeTests;
+			productName = MoneyTreeTests;
+			productReference = 48E549532B6059BD008184BA /* MoneyTreeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		48E5495C2B6059BD008184BA /* MoneyTreeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48E5496D2B6059BD008184BA /* Build configuration list for PBXNativeTarget "MoneyTreeUITests" */;
+			buildPhases = (
+				48E549592B6059BD008184BA /* Sources */,
+				48E5495A2B6059BD008184BA /* Frameworks */,
+				48E5495B2B6059BD008184BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48E5495F2B6059BD008184BA /* PBXTargetDependency */,
+			);
+			name = MoneyTreeUITests;
+			productName = MoneyTreeUITests;
+			productReference = 48E5495D2B6059BD008184BA /* MoneyTreeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48E549392B6059BB008184BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					48E549402B6059BB008184BA = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					48E549522B6059BD008184BA = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 48E549402B6059BB008184BA;
+					};
+					48E5495C2B6059BD008184BA = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 48E549402B6059BB008184BA;
+					};
+				};
+			};
+			buildConfigurationList = 48E5493C2B6059BB008184BA /* Build configuration list for PBXProject "MoneyTree" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 48E549382B6059BB008184BA;
+			productRefGroup = 48E549422B6059BB008184BA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48E549402B6059BB008184BA /* MoneyTree */,
+				48E549522B6059BD008184BA /* MoneyTreeTests */,
+				48E5495C2B6059BD008184BA /* MoneyTreeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48E5493F2B6059BB008184BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48E5494E2B6059BD008184BA /* Preview Assets.xcassets in Resources */,
+				48E5494B2B6059BD008184BA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48E549512B6059BD008184BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48E5495B2B6059BD008184BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48E5493D2B6059BB008184BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48E549472B6059BB008184BA /* ContentView.swift in Sources */,
+				48E549492B6059BB008184BA /* Item.swift in Sources */,
+				48E549452B6059BB008184BA /* MoneyTreeApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48E5494F2B6059BD008184BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48E549582B6059BD008184BA /* MoneyTreeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48E549592B6059BD008184BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48E549622B6059BD008184BA /* MoneyTreeUITests.swift in Sources */,
+				48E549642B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		48E549552B6059BD008184BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48E549402B6059BB008184BA /* MoneyTree */;
+			targetProxy = 48E549542B6059BD008184BA /* PBXContainerItemProxy */;
+		};
+		48E5495F2B6059BD008184BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48E549402B6059BB008184BA /* MoneyTree */;
+			targetProxy = 48E5495E2B6059BD008184BA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		48E549652B6059BD008184BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		48E549662B6059BD008184BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		48E549682B6059BD008184BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MoneyTree/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MoneyTree;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanshawec.info6134.group9.MoneyTree;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		48E549692B6059BD008184BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MoneyTree/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MoneyTree;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanshawec.info6134.group9.MoneyTree;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		48E5496B2B6059BD008184BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanshawec.info6134.group9.MoneyTreeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyTree.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MoneyTree";
+			};
+			name = Debug;
+		};
+		48E5496C2B6059BD008184BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanshawec.info6134.group9.MoneyTreeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyTree.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MoneyTree";
+			};
+			name = Release;
+		};
+		48E5496E2B6059BD008184BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanshawec.info6134.group9.MoneyTreeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MoneyTree;
+			};
+			name = Debug;
+		};
+		48E5496F2B6059BD008184BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanshawec.info6134.group9.MoneyTreeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MoneyTree;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48E5493C2B6059BB008184BA /* Build configuration list for PBXProject "MoneyTree" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48E549652B6059BD008184BA /* Debug */,
+				48E549662B6059BD008184BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48E549672B6059BD008184BA /* Build configuration list for PBXNativeTarget "MoneyTree" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48E549682B6059BD008184BA /* Debug */,
+				48E549692B6059BD008184BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48E5496A2B6059BD008184BA /* Build configuration list for PBXNativeTarget "MoneyTreeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48E5496B2B6059BD008184BA /* Debug */,
+				48E5496C2B6059BD008184BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48E5496D2B6059BD008184BA /* Build configuration list for PBXNativeTarget "MoneyTreeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48E5496E2B6059BD008184BA /* Debug */,
+				48E5496F2B6059BD008184BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48E549392B6059BB008184BA /* Project object */;
+}
