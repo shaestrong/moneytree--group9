@@ -4,12 +4,11 @@
 
 An application to help children learn how to save, manage and make smart decisions with their money.
 
-## Members
-
-[TODO: Add name via commit]
+## Group 9
 
 * Stanley Cao
 * Stephany Ceron
+* Shaelyn Strong
 
 ## Features
 
