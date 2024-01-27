@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CreateEntryView: View {
+struct EntryCreateView: View {
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
@@ -37,8 +37,7 @@ struct CreateEntryView: View {
                 Text("Expense").tag(EntryType.expense)
                 Text("Income").tag(EntryType.income)
             }.pickerStyle(SegmentedPickerStyle())
-             .padding(.horizontal, 16)
-             .padding(.vertical, 12)
+             .padding(.horizontal)
             
             // create a list of input
             Form {
@@ -53,7 +52,6 @@ struct CreateEntryView: View {
                 Section(header: Text("Notes")) {
                     TextField("Notes", text: $notes, axis: .vertical)
                 }
-                
             }
             
             // large button to submit
@@ -63,12 +61,13 @@ struct CreateEntryView: View {
             }
              .controlSize(.large)
              .buttonStyle(.borderedProminent)
-             .padding(.horizontal, 16)
-             .padding(.vertical, 12)
+             .clipShape(Capsule())
+             .padding(.horizontal)
+             .padding(.vertical, 8)
         }
     }
 }
 
 #Preview {
-    CreateEntryView()
+    EntryCreateView()
 }
