@@ -32,13 +32,11 @@ struct ContentView: View {
             List {
                 ForEach(entries) { item in
                     NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        EntryDetailView(entry: item)
                     } label: {
                         VStack(alignment: .leading, spacing: 3) {
                             Text(item.name)
-                            Text(item.amount, format: .currency(code: "CAD")).font(.monospaced(.caption)()).foregroundStyle(item.entryType == .income ?
-                                    .green : .red
-                                )
+                            MoneyText(amount: item.amount, type: item.entryType)
                         }
                     }
                 }
@@ -53,7 +51,9 @@ struct ContentView: View {
                         Label("Add Item", systemImage: "plus")
                     }.sheet(isPresented: $showingSheet, content: {
                         NavigationView {
-                            CreateEntryView()
+                            EntryCreateView()
+                                .navigationTitle("Add")
+                                .navigationBarTitleDisplayMode(.inline)
                         }
                         .presentationDetents([.medium])
                     })
