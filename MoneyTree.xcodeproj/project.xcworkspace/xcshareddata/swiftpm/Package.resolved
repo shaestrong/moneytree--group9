@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftdata-sectionedquery",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/beechtom/swiftdata-sectionedquery.git",
+      "state" : {
+        "revision" : "b07dc7502316c2fae12443537e14b94b2a3b74b5",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}

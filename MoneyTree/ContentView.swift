@@ -7,16 +7,18 @@
 
 import SwiftUI
 import SwiftData
+import SectionedQuery
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     
     @Query private var items: [Item]
     
-    @Query private var entries: [Entry]
+    @SectionedQuery(\.day)
+    private var sections: SectionedResults<String, Entry>
     
     @State private var showingSheet = false
-
+    
     var body: some View {
         NavigationSplitView {
             ScrollView(.horizontal) {
@@ -30,17 +32,27 @@ struct ContentView: View {
             }.frame(height: 200)
             
             List {
-                ForEach(entries) { item in
-                    NavigationLink {
-                        EntryDetailView(entry: item)
-                    } label: {
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(item.name)
-                            MoneyText(amount: item.amount, type: item.entryType)
+                ForEach(sections) { section in
+                    Section(header: Text(section.id)) {
+                        ForEach(section) { item in
+                            NavigationLink {
+                                EntryDetailView(entry: item)
+                            } label: {
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text(item.name)
+                                    MoneyText(amount: item.amount, type: item.entryType)
+                                }
+                            }
+                        }
+                        .onDelete { indexSet in
+                            withAnimation {
+                                for index in indexSet {
+                                    modelContext.delete(section[index])
+                                }
+                            }
                         }
                     }
                 }
-                .onDelete(perform: deleteEntries)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -63,18 +75,18 @@ struct ContentView: View {
             Text("Select an item")
         }
     }
-
+    
     private func addEntry() {
         showingSheet.toggle()
     }
-
-    private func deleteEntries(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(entries[index])
-            }
-        }
-    }
+    //
+    //    private func deleteEntries(offsets: IndexSet) {
+    //        withAnimation {
+    //            for index in offsets {
+    //                // modelContext.delete(entries[index])
+    //            }
+    //        }
+    //    }
 }
 
 #Preview {
