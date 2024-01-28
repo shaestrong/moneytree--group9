@@ -14,6 +14,7 @@
 		48CFD2E42B64BB4200DB78F3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2E32B64BB4200DB78F3 /* Goal.swift */; };
 		48CFD2E62B656E8D00DB78F3 /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2E52B656E8D00DB78F3 /* EntryDetailView.swift */; };
 		48CFD2E92B6570E900DB78F3 /* MoneyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2E82B6570E900DB78F3 /* MoneyText.swift */; };
+		48CFD2F62B670F4800DB78F3 /* SectionedQuery in Frameworks */ = {isa = PBXBuildFile; productRef = 48CFD2F52B670F4800DB78F3 /* SectionedQuery */; };
 		48E549452B6059BB008184BA /* MoneyTreeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549442B6059BB008184BA /* MoneyTreeApp.swift */; };
 		48E549472B6059BB008184BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549462B6059BB008184BA /* ContentView.swift */; };
 		48E549492B6059BB008184BA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549482B6059BB008184BA /* Item.swift */; };
@@ -67,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48CFD2F62B670F4800DB78F3 /* SectionedQuery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +125,13 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		48CFD2EF2B670D7200DB78F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		48E549382B6059BB008184BA = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +139,7 @@
 				48E549562B6059BD008184BA /* MoneyTreeTests */,
 				48E549602B6059BD008184BA /* MoneyTreeUITests */,
 				48E549422B6059BB008184BA /* Products */,
+				48CFD2EF2B670D7200DB78F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,6 +209,9 @@
 			dependencies = (
 			);
 			name = MoneyTree;
+			packageProductDependencies = (
+				48CFD2F52B670F4800DB78F3 /* SectionedQuery */,
+			);
 			productName = MoneyTree;
 			productReference = 48E549412B6059BB008184BA /* MoneyTree.app */;
 			productType = "com.apple.product-type.application";
@@ -271,6 +284,9 @@
 				Base,
 			);
 			mainGroup = 48E549382B6059BB008184BA;
+			packageReferences = (
+				48CFD2F42B670F4800DB78F3 /* XCRemoteSwiftPackageReference "swiftdata-sectionedquery" */,
+			);
 			productRefGroup = 48E549422B6059BB008184BA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -648,6 +664,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		48CFD2F42B670F4800DB78F3 /* XCRemoteSwiftPackageReference "swiftdata-sectionedquery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/beechtom/swiftdata-sectionedquery.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		48CFD2F52B670F4800DB78F3 /* SectionedQuery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48CFD2F42B670F4800DB78F3 /* XCRemoteSwiftPackageReference "swiftdata-sectionedquery" */;
+			productName = SectionedQuery;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 48E549392B6059BB008184BA /* Project object */;
 }

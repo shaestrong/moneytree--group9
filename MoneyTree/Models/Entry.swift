@@ -24,6 +24,10 @@ final class Entry {
     var date: Date
     var notes: String
     
+    var day: String {
+        return self.date.formatted(date: .numeric, time: .omitted)
+    }
+    
     init(timestamp: Date, entryType: EntryType, amount: Double, name: String, notes: String, date: Date) {
         self.timestamp = timestamp
         self.entryType = entryType
