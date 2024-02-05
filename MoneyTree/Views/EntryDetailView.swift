@@ -45,7 +45,10 @@ struct EntryDetailView: View {
                     modelContext.delete(entry)
                 }
             }
-        }.toolbar(.hidden, for: .tabBar)
+        }
+        .padding(.top, 0)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .tabBar)
     }
 }
 
