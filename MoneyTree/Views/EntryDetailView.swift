@@ -45,7 +45,7 @@ struct EntryDetailView: View {
                     modelContext.delete(entry)
                 }
             }
-        }
+        }.toolbar(.hidden, for: .tabBar)
     }
 }
 

@@ -72,7 +72,9 @@ struct EntryEditorView: View {
              .buttonStyle(.borderedProminent)
              .padding(.horizontal)
              .padding(.vertical, 8)
-        }.navigationTitle(entry == nil ? "Add Entry" : "Edit Entry")
+        }.navigationTitle(entry == nil ? "Add Entry" : "Edit")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .tabBar)
             .onAppear {
                 if let entry = entry {
                     entryType = entry.entryType
