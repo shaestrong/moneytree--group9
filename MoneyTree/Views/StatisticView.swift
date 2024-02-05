@@ -42,6 +42,8 @@ struct StatisticView: View {
     
     private func calculateSavings() {
         var savingsByDay = [String: Double]()
+        totalIncome = 0.0
+        totalExpense = 0.0
         
         for entry in entries.flatMap({ $0 }) {
             let day = entry.day
