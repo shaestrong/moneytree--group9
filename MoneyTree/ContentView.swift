@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import SectionedQuery
 
 struct ContentView: View {
     
@@ -18,7 +17,7 @@ struct ContentView: View {
                     Label("Home", systemImage: "house")
                 }
             
-            StatisticView()
+            StatisticView(month: Date.now)
                 .tabItem {
                     Label("Statistic", systemImage: "chart.bar.xaxis")
                 }
