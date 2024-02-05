@@ -37,3 +37,9 @@ final class Entry {
         self.notes = notes
     }
 }
+
+extension Entry {
+    static var empty: Entry {
+        return Entry(timestamp: Date(), entryType: .expense, amount: 0, name: "", notes: "", date: Date())
+    }
+}

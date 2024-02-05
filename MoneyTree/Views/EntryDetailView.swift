@@ -13,10 +13,39 @@ struct EntryDetailView: View {
     @Environment(\.modelContext) var modelContext
     
     var body: some View {
-        Text(entry.name)
-        Text(entry.date, format: Date.FormatStyle(date: .abbreviated, time: .shortened))
-        MoneyText(amount: entry.amount, type: entry.entryType)
-        Text(entry.notes)
+        List {
+            VStack (alignment: .leading) {
+                Text(entry.name).font(.title2).fontWeight(.medium)
+                
+                MoneyText(amount: entry.amount, type: entry.entryType)
+                    .fontWeight(.medium)
+                
+                HStack {
+                    Image(systemName: "calendar")
+                        .font(.subheadline)
+                    
+                    Text(entry.date, format: Date.FormatStyle(date: .abbreviated, time: .shortened)).font(.subheadline)
+                }.padding(.top, 8)
+            }
+            
+            if entry.notes != "" {
+                Section(header: Text("notes")){
+                    Text(entry.notes)
+                }
+            }
+            
+            Section {
+                Button("Edit") {
+                }.background(
+                    NavigationLink("", destination: EntryEditorView(
+                        entry: entry
+                    )).opacity(0)
+                )
+                Button("Remove", role: .destructive) {
+                    modelContext.delete(entry)
+                }
+            }
+        }
     }
 }
 
@@ -29,10 +58,13 @@ struct EntryDetailView: View {
         entryType: .expense,
         amount: 8.49,
         name: "Whopper Meal Combo",
-        notes: "Burger King",
+        notes: "Bought a wopper meal from Burger King, long long text",
         date: Date()
     )
     
-    return EntryDetailView(entry: entry)
-        .modelContainer(container)
+    
+    return NavigationStack {
+        EntryDetailView(entry: entry)
+            .modelContainer(container)
+    }
 }

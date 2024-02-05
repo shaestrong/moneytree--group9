@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EntryCreateView: View {
+struct EntryEditorView: View {
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
@@ -22,10 +22,19 @@ struct EntryCreateView: View {
     
     @State var date = Date();
     
+    @State var entry: Entry?
+    
     private func addEntry() {
-        let entry = Entry(timestamp: Date(), entryType: entryType, amount: amount, name: name, notes: notes, date: date)
-        
-        modelContext.insert(entry)
+        if (entry == nil) {
+            entry = Entry(timestamp: Date(), entryType: entryType, amount: amount, name: name, notes: notes, date: date)
+            modelContext.insert(entry!)
+        } else {
+            entry!.entryType = entryType
+            entry!.amount = amount
+            entry!.name = name
+            entry!.notes = notes
+            entry!.date = date
+        }
         
         dismiss()
     }
@@ -56,18 +65,26 @@ struct EntryCreateView: View {
             
             // large button to submit
             Button(action: addEntry) {
-                Text("Add")
+                Text(entry == nil ? "Add" : "Update")
                  .frame(maxWidth: .infinity)
             }
              .controlSize(.large)
              .buttonStyle(.borderedProminent)
-             .clipShape(Capsule())
              .padding(.horizontal)
              .padding(.vertical, 8)
-        }
+        }.navigationTitle(entry == nil ? "Add Entry" : "Edit Entry")
+            .onAppear {
+                if let entry = entry {
+                    entryType = entry.entryType
+                    amount = entry.amount
+                    name = entry.name
+                    notes = entry.notes
+                    date = entry.date
+                }
+            }
     }
 }
 
 #Preview {
-    EntryCreateView()
+    EntryEditorView()
 }

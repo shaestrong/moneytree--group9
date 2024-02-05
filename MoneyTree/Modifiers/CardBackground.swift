@@ -9,11 +9,11 @@ import SwiftUI
 
 // view modifier
 struct CardBackground: ViewModifier {
+    
     func body(content: Content) -> some View {
         content
-            .background()
+            .background(Color(UIColor.secondarySystemGroupedBackground))
             .cornerRadius(20)
-            .shadow(color: Color.black.opacity(0.2), radius: 4)
     }
 }
 

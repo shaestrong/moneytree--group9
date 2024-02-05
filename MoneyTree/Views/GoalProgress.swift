@@ -12,14 +12,15 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
         
         GeometryReader { geometry in
             RoundedRectangle(cornerRadius: 14)
-                .frame(width: geometry.size.width, height: 24)
+                .frame(width: geometry.size.width, height: 16)
                     .foregroundColor(.gray)
                     .overlay(alignment: .leading) {
                         RoundedRectangle(cornerRadius: 14)
-                            .frame(width: CGFloat(configuration.fractionCompleted ?? 0) * geometry.size.width, height: 24)
+                            .frame(width: CGFloat(configuration.fractionCompleted ?? 0) * geometry.size.width - 6, height: 10)
+                            .offset(x: 3)
                             .foregroundColor(.green)
                 }
-        }.frame(height: 28)
+        }.frame(height: 16)
     }
 }
  
@@ -29,8 +30,9 @@ struct GoalProgress: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-            Text("Name of the goal").font(.title3)
-            Text("$189.20 / $190.15").font(.subheadline)
+            Text("Name of the goal").font(.title2).fontWeight(.medium)
+            Spacer()
+            Text("$189.20/300.00").font(.subheadline)
             ProgressView(value: progress)
                 .progressViewStyle(RoundedRectProgressViewStyle())
         }
