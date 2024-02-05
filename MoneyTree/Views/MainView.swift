@@ -19,7 +19,7 @@ struct MainView: View {
     
     @State private var showingSheet = false
     
-    private var cardWidth = UIScreen.main.bounds.size.width / 2 - 32
+    private var cardWidth = UIScreen.main.bounds.size.width / 2 - 24
     
     var body: some View {
         NavigationStack {
