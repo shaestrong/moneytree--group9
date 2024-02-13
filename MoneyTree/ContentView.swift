@@ -21,6 +21,10 @@ struct ContentView: View {
                 .tabItem {
                     Label("Statistic", systemImage: "chart.bar.xaxis")
                 }
+            TreeView()
+                .tabItem {
+                    Label("Trees", systemImage: "tree")
+                }
         }
     }
 }
