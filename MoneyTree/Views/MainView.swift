@@ -13,11 +13,13 @@ struct MainView: View {
     @Environment(\.modelContext) private var modelContext
     
     @Query private var items: [Item]
+    @Query private var goals: [Goal]
     
     @SectionedQuery(\.day)
     private var sections: SectionedResults<String, Entry>
-    
+
     @State private var showingSheet = false
+    @State private var showingGoalSheet = false
     
     private var cardWidth = UIScreen.main.bounds.size.width / 2 - 24
     
@@ -26,27 +28,60 @@ struct MainView: View {
             List {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack (spacing: 16) {
-                        GoalProgress()
-                            .frame(width: cardWidth, height: 150)
-                        // start of add
-                        VStack (spacing: 8) {
-                            Image(systemName: "plus.circle")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                                .imageScale(.large)
-                                .foregroundColor(.accentColor)
-                            Text("Add a new goal")
-                                .foregroundColor(.accentColor)
-                                .fontWeight(.medium)
+                      if goals.isEmpty {
+                          VStack (spacing: 8) {
+                              Image(systemName: "dollarsign.circle")
+                                  .resizable()
+                                  .frame(width: 32, height: 32)
+                                  .imageScale(.large)
+                                  .foregroundColor(.green)
+                              Text("Oops, no goals found!")
+                                  .fontWeight(.bold)
+                                  .multilineTextAlignment(.center)
+                              Text("Create some cool goals!")
+                                  .font(.caption)
+                                  .foregroundColor(.gray)
+                
+                          }
+                          .padding()
+                          .frame(width: cardWidth, height: 150)
+                          .card()
+                        } else {
+                            ForEach(goals) { goal in
+                                GoalProgress(goal: goal)
+                                    .frame(width: cardWidth, height: 150)
+                             }
                         }
-                        .padding()
-                        .frame(width: cardWidth, height: 150)
-                        .card()
-                        // end of add
+                    
+                        // start of add
+                        Button(action: addGoal) {
+                            VStack (spacing: 8) {
+                                Image(systemName: "plus.circle")
+                                    .resizable()
+                                    .frame(width: 32, height: 32)
+                                    .imageScale(.large)
+                                    .foregroundColor(.accentColor)
+                                Text("Add a new goal")
+                                    .foregroundColor(.accentColor)
+                                    .fontWeight(.medium)
+                            }
+                            .padding()
+                            .frame(width: cardWidth, height: 150)
+                            .card()
+                            // end of add
+                        }
+                       
                     }
+                   
                 }
                 .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 .listRowBackground(Color.clear)
+                .sheet(isPresented: $showingGoalSheet, content: {
+                    NavigationView {
+                        GoalEditorView()
+                            .navigationBarTitleDisplayMode(.inline)
+                    }
+                })
                 
                 ForEach(sections) { section in
                     Section(header: Text(section.id)) {
@@ -93,6 +128,10 @@ struct MainView: View {
     private func addEntry() {
         showingSheet.toggle()
     }
+    
+    private func addGoal() {
+        showingGoalSheet.toggle()
+    }
     //
     //    private func deleteEntries(offsets: IndexSet) {
     //        withAnimation {
@@ -103,7 +142,24 @@ struct MainView: View {
     //    }
 }
 
+
 #Preview {
-    MainView()
-        .modelContainer(for: Entry.self, inMemory: true)
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            Entry.self,
+            Goal.self
+        ])
+        
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+    
+   return MainView()
+        .modelContainer(sharedModelContainer)
+
 }

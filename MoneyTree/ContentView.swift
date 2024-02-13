@@ -26,6 +26,21 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Entry.self, inMemory: true)
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            Entry.self,
+            Goal.self
+        ])
+        
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+    
+   return ContentView()
+        .modelContainer(sharedModelContainer)
 }

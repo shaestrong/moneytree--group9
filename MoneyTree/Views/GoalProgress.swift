@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
- 
+import SwiftData
+
 struct RoundedRectProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         
@@ -26,21 +27,46 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
  
 
 struct GoalProgress: View {
-    @State var progress = 0.5
+    //@State var progress = 0.5
+    @State var goal : Goal
+    @State private var showingGoalSheet = false
     
     var body: some View {
-        VStack (alignment: .leading) {
-            Text("Name of the goal").font(.title2).fontWeight(.medium)
-            Spacer()
-            Text("$189.20/300.00").font(.subheadline)
-            ProgressView(value: progress)
-                .progressViewStyle(RoundedRectProgressViewStyle())
+        Button(action: editGoal) {
+            VStack (alignment: .leading) {
+                Text(goal.name).font(.title2).fontWeight(.medium)
+                Spacer()
+                Text("Goal: \(formattedDate)")
+                Text("\(goal.current, specifier: "%.2f")/\(goal.target, specifier: "%.2f")")
+                    .font(.subheadline)
+                ProgressView(value: goal.current / goal.target)
+                    .progressViewStyle(RoundedRectProgressViewStyle())
+            }
+            .padding()
+            .card()
         }
-        .padding()
-        .card()
+        .foregroundColor(.black)
+        .sheet(isPresented: $showingGoalSheet, content: {
+            NavigationView {
+                GoalEditorView(goal:goal)
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+        })
+    }
+    
+    private var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        return dateFormatter.string(from: goal.deadline)
+    }
+    
+    private func editGoal() {
+        showingGoalSheet.toggle()
     }
 }
 
 #Preview {
-    GoalProgress()
+    GoalProgress(goal: Goal(name: "Test Goal", target: 100, deadline: Date()))
+
+   
 }
