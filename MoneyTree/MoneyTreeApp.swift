@@ -13,6 +13,7 @@ struct MoneyTreeApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Entry.self,
+            Goal.self
         ])
         
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
