@@ -81,6 +81,8 @@ struct GoalEditorView: View {
              .buttonStyle(.borderedProminent)
              .padding(.horizontal)
              .padding(.vertical, 8)
+             .disabled(name.isEmpty || target == 0 )
+         
         }
         .navigationTitle(goal == nil ? "Add Goal" : "Edit")
             .navigationBarTitleDisplayMode(.inline)
