@@ -35,7 +35,7 @@ struct MainView: View {
                                   .frame(width: 32, height: 32)
                                   .imageScale(.large)
                                   .foregroundColor(.green)
-                              Text("Oops, no goals found!")
+                              Text("Oops, no trees found!")
                                   .fontWeight(.bold)
                                   .multilineTextAlignment(.center)
                               Text("Create some cool goals!")
@@ -71,10 +71,7 @@ struct MainView: View {
                             // end of add
                         }
                         .sheet(isPresented: $showingGoalSheet, content: {
-                            NavigationView {
-                                GoalEditorView()
-                                    .navigationBarTitleDisplayMode(.inline)
-                            }
+                            AddTreeFormView(isPresented: $showingGoalSheet) 
                         })
                        
                     }

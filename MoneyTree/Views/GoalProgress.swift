@@ -47,10 +47,7 @@ struct GoalProgress: View {
         }
         .foregroundColor(.black)
         .sheet(isPresented: $showingGoalSheet, content: {
-            NavigationView {
-                GoalEditorView(goal:goal)
-                    .navigationBarTitleDisplayMode(.inline)
-            }
+            AddTreeFormView(isPresented: $showingGoalSheet, goal: goal)
         })
     }
     

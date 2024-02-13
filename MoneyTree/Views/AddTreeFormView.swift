@@ -1,16 +1,30 @@
 import SwiftUI
 
 struct AddTreeFormView: View {
+    @Environment(\.modelContext) private var modelContext
+    
     @Binding var isPresented: Bool
-    var onSave: (String, String) -> Void
     
     @State private var treeName = ""
     @State private var treeType = ""
-    @State private var goal = ""
+    @State private var goalTarget:Double = 0
     @State private var goalDate = Date()
     
+    @State var goal: Goal?
+    
     var isSaveDisabled: Bool {
-        treeName.isEmpty || goal.isEmpty
+        treeName.isEmpty || goalTarget == 0
+    }
+    
+    private func addGoal() {
+        if (goal == nil){
+            goal = Goal(name: treeName, target: goalTarget, deadline: goalDate)
+            modelContext.insert(goal!)
+        } else {
+            goal!.name = treeName
+            goal!.target = goalTarget
+            goal!.deadline = goalDate
+        }
     }
     
     var body: some View {
@@ -19,24 +33,37 @@ struct AddTreeFormView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 20) {
-                Text("Add Tree")
+                Text(goal == nil ? "Add Tree" : "Edit Tree")
                     .font(.title)
                     .fontWeight(.bold)
                 
                 VStack(alignment: .leading, spacing: 15) {
-                    TextField("Tree Name", text: $treeName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    VStack{
+                        TextField("Tree Name", text: $treeName)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Text("This will help you remember what your goal is about.")
+                            .foregroundColor(.gray)
+                            .font(.caption)
+                    }
                     
-                    TextField("Tree Type", text: $treeType)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    //To be added in sprint 2
+                    /*TextField("Tree Type", text: $treeType)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())*/
                     
-                    TextField("Savings Goal", text: $goal)
-                        .keyboardType(.numberPad)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    VStack{
+                        TextField("Savings Goal", value: $goalTarget, format: .currency(code: "CAD"))
+                            .keyboardType(.numberPad)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Text("This is the amount of money you want to save. It can be for a toy, a game, or anything else you like!")
+                        .foregroundColor(.gray)
+                        .font(.caption)
+                    }
+                    
                     
                     DatePicker("Goal Date", selection: $goalDate, displayedComponents: .date)
                         .datePickerStyle(DefaultDatePickerStyle())
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
                 }
                 .padding(.horizontal, 20)
                 
@@ -50,9 +77,10 @@ struct AddTreeFormView: View {
                     .background(Color.red)
                     .cornerRadius(10)
                     
-                    Button("Save") {
-                        onSave(treeName, goal)
+                    Button(goal == nil ? "Save" : "Update") {
+                        addGoal()
                         isPresented = false
+                        goal = nil
                     }
                     .foregroundColor(.white)
                     .padding()
@@ -67,12 +95,19 @@ struct AddTreeFormView: View {
             .background(Color.white)
             .cornerRadius(20)
             .shadow(radius: 10)
+            .onAppear {
+                if let goal = goal {
+                    treeName = goal.name
+                    goalTarget = goal.target
+                    goalDate = goal.deadline
+                }
+            }
         }
     }
 }
 
 struct AddTreeFormView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTreeFormView(isPresented: .constant(true), onSave: { _, _ in })
+        AddTreeFormView(isPresented: .constant(true))
     }
 }

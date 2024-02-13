@@ -1,31 +1,63 @@
 import SwiftUI
-
-class TreeViewModel: ObservableObject {
-    @Published var isContentVisible = true
-    @Published var isTreeAdded = false
-    @Published var treeNames: [String] = []
-    @Published var treeGoals: [String] = []
-    @Published var isButtonVisible = true
-    @Published var isFormVisible = false
-    @Published var isFirstSavePressed = false
-    @Published var showAlert = false
-    @Published var selectedTreeIndex: Int?
-}
+import SwiftData
 
 struct TreeView: View {
-    @StateObject private var viewModel = TreeViewModel()
-    @State private var isAddTreeFormPresented = false
+    @Environment(\.modelContext) private var modelContext
+    @State private var showTreeForm = false
+    @State private var showMaxAlert = false
+    @State private var showDeleteAlert = false
+    @State private var selectedTree: Goal?
+    
+    @Query private var goals: [Goal]
     
     var body: some View {
         VStack {
-            if viewModel.isFirstSavePressed {
+            if !goals.isEmpty {
                 Text("My Money Trees")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
+             
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                    ForEach(goals) { goal in
+                        VStack {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(Color.white)
+                                    .shadow(radius: 5)
+                                    .frame(width: 150, height: 150)
+                                Image(systemName: "tree")
+                                    .font(.system(size: 75))
+                                    .foregroundColor(.green)
+                                    .padding(10)
+                                
+                                Button(action: {
+                                    selectedTree = goal
+                                    showDeleteAlert = true
+                                }) {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(.red)
+                                        .padding(8)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                .offset(x: 45, y: -45)
+                            }
+                            .padding(.bottom, 20)
+                            
+                            Text(goal.name)
+                                .font(.headline)
+                                .foregroundColor(.gray)
+                                .padding(.bottom, 5)
+                            
+                            Text("$\(goal.target, specifier: "%.2f")")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+                .padding()
             }
-            
-            if viewModel.isContentVisible {
+            else {
                 ZStack {
                     Circle()
                         .fill(Color.green)
@@ -52,52 +84,13 @@ struct TreeView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 20)
                     .padding(.bottom, 30)
-            } else {
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-                    ForEach(viewModel.treeNames.indices, id: \.self) { index in
-                        VStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .fill(Color.white)
-                                    .shadow(radius: 5)
-                                    .frame(width: 150, height: 150)
-                                Image(systemName: "tree")
-                                    .font(.system(size: 75))
-                                    .foregroundColor(.green)
-                                    .padding(10)
-                                
-                                Button(action: {
-                                    viewModel.selectedTreeIndex = index
-                                    viewModel.showAlert = true
-                                }) {
-                                    Image(systemName: "xmark.circle.fill")
-                                        .foregroundColor(.red)
-                                        .padding(8)
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                                .offset(x: 45, y: -45)
-                            }
-                            .padding(.bottom, 20)
-                            
-                            Text(viewModel.treeNames[index])
-                                .font(.headline)
-                                .foregroundColor(.gray)
-                                .padding(.bottom, 5)
-                            
-                            Text(viewModel.treeGoals[index])
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-                .padding()
             }
             
             Spacer()
             
-            if viewModel.treeNames.count >= 6 {
+            if goals.count >= 6 {
                 Button(action: {
-                    viewModel.showAlert = true
+                    showMaxAlert.toggle()
                 }) {
                     Text("Add Tree")
                         .font(.headline)
@@ -108,13 +101,12 @@ struct TreeView: View {
                         .shadow(radius: 3)
                 }
                 .padding(.bottom, 20)
-                .alert(isPresented: $viewModel.showAlert) {
+                .alert(isPresented: $showMaxAlert) {
                     Alert(title: Text("Uh oh!"), message: Text("You're out of trees. Delete one to be able to add another."), dismissButton: .default(Text("OK")))
                 }
-            } else if viewModel.isButtonVisible {
+            } else {
                 Button(action: {
-                    isAddTreeFormPresented.toggle()
-                    viewModel.isFirstSavePressed = true
+                    showTreeForm.toggle()
                 }) {
                     Text("Add Tree")
                         .font(.headline)
@@ -125,37 +117,43 @@ struct TreeView: View {
                         .shadow(radius: 3)
                 }
                 .padding(.bottom, 20)
-                .sheet(isPresented: $isAddTreeFormPresented) {
-                    AddTreeFormView(isPresented: $isAddTreeFormPresented) { treeName, treeGoal in
-                        viewModel.isContentVisible = false
-                        viewModel.isTreeAdded = true
-                        viewModel.isButtonVisible = true
-                        viewModel.isFormVisible = true
-                        viewModel.treeNames.append(treeName)
-                        viewModel.treeGoals.append(treeGoal)
-                    }
+                .sheet(isPresented: $showTreeForm) {
+                    AddTreeFormView(isPresented: $showTreeForm) 
                 }
             }
         }
         .padding(.top, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
+        /*.background(
             viewModel.isFormVisible ? Color.clear : Color.white
-        )
-        .alert(isPresented: $viewModel.showAlert) {
+        )*/
+        .alert(isPresented: $showDeleteAlert) {
             Alert(title: Text("Delete Tree"), message: Text("Are you sure you want to delete this tree?"), primaryButton: .destructive(Text("Delete")) {
-                if let index = viewModel.selectedTreeIndex {
-                    viewModel.treeNames.remove(at: index)
-                    viewModel.treeGoals.remove(at: index)
-                    viewModel.selectedTreeIndex = nil
+                if let goal = selectedTree {
+                    modelContext.delete(goal)
                 }
             }, secondaryButton: .cancel())
         }
     }
 }
 
-struct TreeView_Previews: PreviewProvider {
-    static var previews: some View {
-        TreeView()
-    }
+#Preview {
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            Entry.self,
+            Goal.self
+        ])
+        
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+    
+   return TreeView()
+        .modelContainer(sharedModelContainer)
+
 }
