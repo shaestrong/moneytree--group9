@@ -2,12 +2,16 @@ import SwiftUI
 
 struct AddTreeFormView: View {
     @Binding var isPresented: Bool
-    var onSave: () -> Void
+    var onSave: (String, String) -> Void
     
     @State private var treeName = ""
     @State private var treeType = ""
     @State private var goal = ""
     @State private var goalDate = Date()
+    
+    var isSaveDisabled: Bool {
+        treeName.isEmpty || goal.isEmpty
+    }
     
     var body: some View {
         ZStack {
@@ -47,15 +51,15 @@ struct AddTreeFormView: View {
                     .cornerRadius(10)
                     
                     Button("Save") {
-                        // Save action
+                        onSave(treeName, goal)
                         isPresented = false
-                        onSave()
                     }
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.green)
+                    .background(isSaveDisabled ? Color.gray : Color.green)
                     .cornerRadius(10)
+                    .disabled(isSaveDisabled)
                 }
                 .padding(.horizontal, 20)
             }
@@ -69,6 +73,6 @@ struct AddTreeFormView: View {
 
 struct AddTreeFormView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTreeFormView(isPresented: .constant(true), onSave: {})
+        AddTreeFormView(isPresented: .constant(true), onSave: { _, _ in })
     }
 }
