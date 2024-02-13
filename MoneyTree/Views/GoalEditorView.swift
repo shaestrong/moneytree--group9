@@ -35,19 +35,40 @@ struct GoalEditorView: View {
     var body: some View {
         VStack {
             Form {
-                Section (header: Text("Give your goal a cool name!"),
-                         footer: Text("This will help you remember what your goal is about.")){
+                Section (header: 
+                            Text("Give your goal a cool name!")
+                            .foregroundColor(.gray)
+                            .font(.caption),
+                         footer: 
+                            Text("This will help you remember what your goal is about.")
+                            .foregroundColor(.gray)
+                            .font(.caption)
+                ){
                     TextField("Name", text: $name)
                 }
                 
-                Section (header: Text("Set your savings target!"),
-                         footer: Text("This is the amount of money you want to save. It can be for a toy, a game, or anything else you like!")){
+                Section (header: 
+                            Text("Set your savings target!")
+                            .foregroundColor(.gray)
+                            .font(.caption),
+                         footer: 
+                            Text("This is the amount of money you want to save. It can be for a toy, a game, or anything else you like!")
+                            .foregroundColor(.gray)
+                            .font(.caption)
+                ){
                     TextField("Target", value: $target, format: .currency(code: "CAD"))
                         .keyboardType(.decimalPad)
                 }
                 
-                Section (header: Text("Choose the date to reach your goal!"),
-                         footer: Text("Select the date by when you want to achieve your savings goal.")){
+                Section (header: 
+                            Text("Choose the date to reach your goal!")
+                            .foregroundColor(.gray)
+                            .font(.caption),
+                         footer: 
+                            Text("Select the date by when you want to achieve your savings goal.")
+                            .foregroundColor(.gray)
+                            .font(.caption)
+                ){
                     DatePicker("Deadline", selection: $deadline, displayedComponents: .date)
                 }
             }
