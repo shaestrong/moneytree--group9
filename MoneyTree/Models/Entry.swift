@@ -24,6 +24,8 @@ final class Entry {
     var date: Date
     var notes: String
     
+    var goal: Goal?
+    
     var day: String {
         return self.date.formatted(date: .numeric, time: .omitted)
     }

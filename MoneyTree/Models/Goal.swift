@@ -16,11 +16,12 @@ final class Goal {
     var current: Double
     var deadline: Date
     
+    var entries: [Entry] = []
+    
     init(name: String, target: Double, deadline: Date) {
         self.name = name
         self.target = target
         self.deadline = deadline
-        
         self.current = 0
     }
 }
