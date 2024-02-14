@@ -14,6 +14,8 @@
 		4847D11F2B649EA400160F74 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4847D11E2B649EA400160F74 /* Entry.swift */; };
 		489085702B70610200A607DF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4890856F2B70610200A607DF /* MainView.swift */; };
 		489085752B70643E00A607DF /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489085742B70643E00A607DF /* StatisticView.swift */; };
+		4890857A2B7D438500A607DF /* GoalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489085792B7D438500A607DF /* GoalPicker.swift */; };
+		4890857C2B7D43AC00A607DF /* GoalListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4890857B2B7D43AC00A607DF /* GoalListItem.swift */; };
 		48CFD2DF2B64B35A00DB78F3 /* GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2DE2B64B35A00DB78F3 /* GoalProgress.swift */; };
 		48CFD2E22B64B84800DB78F3 /* CardBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2E12B64B84800DB78F3 /* CardBackground.swift */; };
 		48CFD2E42B64BB4200DB78F3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2E32B64BB4200DB78F3 /* Goal.swift */; };
@@ -55,6 +57,8 @@
 		4847D11E2B649EA400160F74 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		4890856F2B70610200A607DF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		489085742B70643E00A607DF /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
+		489085792B7D438500A607DF /* GoalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPicker.swift; sourceTree = "<group>"; };
+		4890857B2B7D43AC00A607DF /* GoalListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListItem.swift; sourceTree = "<group>"; };
 		48CFD2DE2B64B35A00DB78F3 /* GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgress.swift; sourceTree = "<group>"; };
 		48CFD2E12B64B84800DB78F3 /* CardBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackground.swift; sourceTree = "<group>"; };
 		48CFD2E32B64BB4200DB78F3 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 				489085742B70643E00A607DF /* StatisticView.swift */,
 				143182C52B7AFC88003D71F9 /* GoalEditorView.swift */,
 				1437F1B62B7B518700B4D6A6 /* TreeView.swift */,
+				489085792B7D438500A607DF /* GoalPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				48CFD2E82B6570E900DB78F3 /* MoneyText.swift */,
+				4890857B2B7D43AC00A607DF /* GoalListItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -360,10 +366,12 @@
 				4847D11D2B64970500160F74 /* EntryEditorView.swift in Sources */,
 				48CFD2E62B656E8D00DB78F3 /* EntryDetailView.swift in Sources */,
 				48CFD2DF2B64B35A00DB78F3 /* GoalProgress.swift in Sources */,
+				4890857C2B7D43AC00A607DF /* GoalListItem.swift in Sources */,
 				489085752B70643E00A607DF /* StatisticView.swift in Sources */,
 				1437F1B52B7B516B00B4D6A6 /* AddTreeFormView.swift in Sources */,
 				489085702B70610200A607DF /* MainView.swift in Sources */,
 				48E549492B6059BB008184BA /* Item.swift in Sources */,
+				4890857A2B7D438500A607DF /* GoalPicker.swift in Sources */,
 				143182C62B7AFC88003D71F9 /* GoalEditorView.swift in Sources */,
 				48E549452B6059BB008184BA /* MoneyTreeApp.swift in Sources */,
 				48CFD2E22B64B84800DB78F3 /* CardBackground.swift in Sources */,

@@ -9,8 +9,16 @@ import SwiftUI
 import SwiftData
 
 struct EntryDetailView: View {
+    
     @Bindable var entry : Entry
+    
     @Environment(\.modelContext) var modelContext
+    
+    @State private var showingSheet = false
+    
+    private func openGoalPicker() {
+        showingSheet.toggle()
+    }
     
     var body: some View {
         List {
@@ -31,28 +39,34 @@ struct EntryDetailView: View {
             if entry.entryType == .income {
                 if entry.goal != nil {
                     Section {
-                        HStack {
-                            VStack (alignment: .leading) {
-                                Text(entry.goal!.name).fontWeight(.medium)
-                                Text(entry.goal!.target, format: .currency(code: "CAD")).font(.subheadline)
-                            }
-                            
-                            Spacer()
-                            
-                            ProgressView(value: 0.33)
-                                .progressViewStyle(CircularProgressViewStyle(stroke: 6, size: 32))
+                        Button(action: openGoalPicker) {
+                            GoalListItem(goal: entry.goal!)
                         }
+                        .buttonStyle(.plain)
+                        .sheet(isPresented: $showingSheet, content: {
+                            NavigationView {
+                                GoalPicker(entry: entry)
+                                    .navigationBarTitleDisplayMode(.inline)
+                            }
+                            .presentationDetents([.medium])
+                        })
                     } header: {
                         Text("Goal")
                     } footer: {
-                        let percentage = String(format: "%.2f", entry.amount / entry.goal!.target * 100)
+                        let percentage = String(format: "%.3f", entry.amount / entry.goal!.target * 100)
                         
                         Text("Your contribution has made this goal advanced for \(percentage)%")
                     }
                 } else {
-                    Button("Contribute") {
-                        
-                    }
+                    Button(action: openGoalPicker) {
+                        Text("Contribute")
+                    }.sheet(isPresented: $showingSheet, content: {
+                        NavigationView {
+                            GoalPicker(entry: entry)
+                                .navigationBarTitleDisplayMode(.inline)
+                        }
+                        .presentationDetents([.medium])
+                    })
                 }
             }
             
