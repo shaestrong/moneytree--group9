@@ -23,11 +23,19 @@ struct GoalPicker: View {
     }
     
     var body: some View {
-        List {
-            ForEach(goals) { goal in
-                Button (action: { associateGoal(goal: goal) }) {
-                    GoalListItem(goal: goal)
-                }.buttonStyle(.plain)
+        Form {
+            Section {
+                ForEach(goals) { goal in
+                    Button (action: { associateGoal(goal: goal) }) {
+                        GoalListItem(goal: goal)
+                    }.buttonStyle(.plain)
+                }
+            }
+            
+            // remove the goal
+            Button("Remove contribution", role: .destructive) {
+                entry.goal = nil
+                dismiss()
             }
         }.navigationTitle(entry.goal != nil ? "Change a Goal" : "Select a Goal")
          .navigationBarTitleDisplayMode(.inline)
