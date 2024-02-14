@@ -16,7 +16,7 @@ final class Goal {
     var current: Double
     var deadline: Date
     
-    var entries: [Entry] = []
+    @Relationship(deleteRule: .nullify, inverse: \Entry.goal) var entries: [Entry] = []
     
     init(name: String, target: Double, deadline: Date) {
         self.name = name

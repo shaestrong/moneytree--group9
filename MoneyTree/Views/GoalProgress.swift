@@ -24,6 +24,36 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
         }.frame(height: 16)
     }
 }
+
+struct CircularProgressViewStyle: ProgressViewStyle {
+    
+    var stroke: Double
+    var size: Double
+    
+    func makeBody(configuration: Configuration) -> some View {
+        
+        GeometryReader { geometry in
+            Circle()
+                .stroke(
+                    Color.gray.opacity(0.5),
+                    lineWidth: stroke
+                ).frame(width: geometry.size.height, height: geometry.size.height)
+                    .overlay(alignment: .leading) {
+                        Circle()
+                            .trim(from: 0, to: configuration.fractionCompleted ?? 0)
+                            .stroke(
+                                Color.green,
+                                style: StrokeStyle(
+                                    lineWidth: stroke,
+                                    lineCap: .round
+                                )
+                            )
+                            .rotationEffect(.degrees(-90))
+                            .frame(width: geometry.size.height, height: geometry.size.height)
+                }
+        }.frame(width: size, height: size)
+    }
+}
  
 
 struct GoalProgress: View {

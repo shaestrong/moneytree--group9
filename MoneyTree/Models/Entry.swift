@@ -30,13 +30,14 @@ final class Entry {
         return self.date.formatted(date: .numeric, time: .omitted)
     }
     
-    init(timestamp: Date, entryType: EntryType, amount: Double, name: String, notes: String, date: Date) {
+    init(timestamp: Date, entryType: EntryType, amount: Double, name: String, notes: String, date: Date, goal: Goal? = nil) {
         self.timestamp = timestamp
         self.entryType = entryType
         self.amount = amount
         self.name = name
         self.date = date
         self.notes = notes
+        self.goal = goal
     }
 }
 
