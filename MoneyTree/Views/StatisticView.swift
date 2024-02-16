@@ -37,7 +37,9 @@ struct StatisticView: View {
         let filter = #Predicate<Entry> { entry in
             entry.date >= month.startOfMonth && entry.date <= month.endOfMonth
         }
-        _entries = SectionedQuery<String, Entry>(\.day, filter: filter)
+        _entries = SectionedQuery<String, Entry>(\.day,
+                                                  filter: filter
+        )
     }
     
     private func calculateSavings() {

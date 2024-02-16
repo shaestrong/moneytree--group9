@@ -62,7 +62,9 @@ struct GoalProgress: View {
     @State private var showingGoalSheet = false
     
     var body: some View {
-        Button(action: editGoal) {
+        NavigationLink {
+            GoalDetailView(goal: goal)
+        } label : {
             VStack (alignment: .leading) {
                 Text(goal.name).font(.title2).fontWeight(.medium)
                 Spacer()
@@ -74,11 +76,11 @@ struct GoalProgress: View {
             }
             .padding()
             .card()
+            .foregroundColor(.black)
+            //        .sheet(isPresented: $showingGoalSheet, content: {
+            //            AddTreeFormView(isPresented: $showingGoalSheet, goal: goal)
+            //        })
         }
-        .foregroundColor(.black)
-        .sheet(isPresented: $showingGoalSheet, content: {
-            AddTreeFormView(isPresented: $showingGoalSheet, goal: goal)
-        })
     }
     
     private var formattedDate: String {

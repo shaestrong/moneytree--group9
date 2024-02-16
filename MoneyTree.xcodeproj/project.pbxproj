@@ -30,6 +30,9 @@
 		48E549582B6059BD008184BA /* MoneyTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549572B6059BD008184BA /* MoneyTreeTests.swift */; };
 		48E549622B6059BD008184BA /* MoneyTreeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549612B6059BD008184BA /* MoneyTreeUITests.swift */; };
 		48E549642B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549632B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift */; };
+		48FDF9D62B7D5D4700A87383 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDF9D52B7D5D4700A87383 /* GoalDetailView.swift */; };
+		48FDF9D92B7F096D00A87383 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 48FDF9D82B7F096D00A87383 /* Lottie */; };
+		48FDF9E22B7F0D9800A87383 /* Planting.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FDF9E12B7F0D9800A87383 /* Planting.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,8 @@
 		48E5495D2B6059BD008184BA /* MoneyTreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyTreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E549612B6059BD008184BA /* MoneyTreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTreeUITests.swift; sourceTree = "<group>"; };
 		48E549632B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTreeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		48FDF9D52B7D5D4700A87383 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
+		48FDF9E12B7F0D9800A87383 /* Planting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Planting.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48CFD2F62B670F4800DB78F3 /* SectionedQuery in Frameworks */,
+				48FDF9D92B7F096D00A87383 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +131,7 @@
 				143182C52B7AFC88003D71F9 /* GoalEditorView.swift */,
 				1437F1B62B7B518700B4D6A6 /* TreeView.swift */,
 				489085792B7D438500A607DF /* GoalPicker.swift */,
+				48FDF9D52B7D5D4700A87383 /* GoalDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +191,7 @@
 		48E549432B6059BB008184BA /* MoneyTree */ = {
 			isa = PBXGroup;
 			children = (
+				48FDF9E02B7F0D8900A87383 /* Assets */,
 				489085712B70630300A607DF /* Extensions */,
 				48CFD2E72B6570DB00DB78F3 /* Components */,
 				48CFD2E02B64B83400DB78F3 /* Modifiers */,
@@ -222,6 +230,14 @@
 			path = MoneyTreeUITests;
 			sourceTree = "<group>";
 		};
+		48FDF9E02B7F0D8900A87383 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				48FDF9E12B7F0D9800A87383 /* Planting.json */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,6 +256,7 @@
 			name = MoneyTree;
 			packageProductDependencies = (
 				48CFD2F52B670F4800DB78F3 /* SectionedQuery */,
+				48FDF9D82B7F096D00A87383 /* Lottie */,
 			);
 			productName = MoneyTree;
 			productReference = 48E549412B6059BB008184BA /* MoneyTree.app */;
@@ -315,6 +332,7 @@
 			mainGroup = 48E549382B6059BB008184BA;
 			packageReferences = (
 				48CFD2F42B670F4800DB78F3 /* XCRemoteSwiftPackageReference "swiftdata-sectionedquery" */,
+				48FDF9D72B7F096D00A87383 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 48E549422B6059BB008184BA /* Products */;
 			projectDirPath = "";
@@ -334,6 +352,7 @@
 			files = (
 				48E5494E2B6059BD008184BA /* Preview Assets.xcassets in Resources */,
 				48E5494B2B6059BD008184BA /* Assets.xcassets in Resources */,
+				48FDF9E22B7F0D9800A87383 /* Planting.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +383,7 @@
 				4847D11F2B649EA400160F74 /* Entry.swift in Sources */,
 				48E549472B6059BB008184BA /* ContentView.swift in Sources */,
 				4847D11D2B64970500160F74 /* EntryEditorView.swift in Sources */,
+				48FDF9D62B7D5D4700A87383 /* GoalDetailView.swift in Sources */,
 				48CFD2E62B656E8D00DB78F3 /* EntryDetailView.swift in Sources */,
 				48CFD2DF2B64B35A00DB78F3 /* GoalProgress.swift in Sources */,
 				4890857C2B7D43AC00A607DF /* GoalListItem.swift in Sources */,
@@ -712,6 +732,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		48FDF9D72B7F096D00A87383 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -719,6 +747,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 48CFD2F42B670F4800DB78F3 /* XCRemoteSwiftPackageReference "swiftdata-sectionedquery" */;
 			productName = SectionedQuery;
+		};
+		48FDF9D82B7F096D00A87383 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48FDF9D72B7F096D00A87383 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

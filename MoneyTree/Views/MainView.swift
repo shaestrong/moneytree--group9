@@ -15,7 +15,7 @@ struct MainView: View {
     @Query private var items: [Item]
     @Query private var goals: [Goal]
     
-    @SectionedQuery(\.day)
+    @SectionedQuery(\.day, sort: [SortDescriptor(\.date, order: .reverse)])
     private var sections: SectionedResults<String, Entry>
 
     @State private var showingSheet = false
