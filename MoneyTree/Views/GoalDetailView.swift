@@ -19,6 +19,19 @@ struct GoalDetailView: View {
     @SectionedQuery<String, Entry>
     private var sections: SectionedResults<String, Entry>
     
+    private func getMotivationString () -> String {
+        switch true {
+        case goal.progress < 0.4:
+            return "You can do it!"
+        case goal.progress < 0.7:
+            return "You are doing great!"
+        case goal.progress < 1:
+            return "Almost there"
+        default:
+            return "Congratulations!"
+        }
+    }
+    
     
     init (goal: Goal) {
         self.goal = goal
@@ -38,7 +51,11 @@ struct GoalDetailView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
+        
+        let fCurrent = goal.current.formatted(.currency(code: "CAD"))
+        let fTarget = goal.target.formatted(.currency(code: "CAD"))
+        
+        return GeometryReader { geometry in
             List {
                 Section {
                     VStack (alignment: .center) {
@@ -60,10 +77,18 @@ struct GoalDetailView: View {
                         }.padding(.bottom, 24)
                         
                         VStack (alignment: .center) {
-                            Text("Keep it up!").font(.headline)
+                            Text(getMotivationString()).font(.headline)
                                 .padding(.bottom, 4)
+                            
+                            
                             ProgressView(value: goal.progress)
                                 .progressViewStyle(RoundedRectProgressViewStyle())
+                                .overlay {
+                                    Text("\(fCurrent) of \(fTarget)")
+                                        .foregroundColor(.white)
+                                        .font(.caption2)
+                                        .fontWeight(.bold)
+                                }
                             
                         }
                         .padding()
