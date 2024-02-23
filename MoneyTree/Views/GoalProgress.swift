@@ -76,7 +76,7 @@ struct GoalProgress: View {
             }
             .padding()
             .card()
-            .foregroundColor(.black)
+            .foregroundColor(.primary)
             //        .sheet(isPresented: $showingGoalSheet, content: {
             //            AddTreeFormView(isPresented: $showingGoalSheet, goal: goal)
             //        })
