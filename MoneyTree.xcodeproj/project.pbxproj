@@ -20,6 +20,7 @@
 		48C2432D2B8A609F00466839 /* Planting-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 48C243292B8A609F00466839 /* Planting-1.json */; };
 		48C2432E2B8A609F00466839 /* Planting-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 48C2432A2B8A609F00466839 /* Planting-3.json */; };
 		48C2432F2B8A609F00466839 /* Planting-4.json in Resources */ = {isa = PBXBuildFile; fileRef = 48C2432B2B8A609F00466839 /* Planting-4.json */; };
+		48C243312B8A6A0200466839 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C243302B8A6A0200466839 /* View.swift */; };
 		48CFD2DF2B64B35A00DB78F3 /* GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2DE2B64B35A00DB78F3 /* GoalProgress.swift */; };
 		48CFD2E22B64B84800DB78F3 /* CardBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2E12B64B84800DB78F3 /* CardBackground.swift */; };
 		48CFD2E42B64BB4200DB78F3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2E32B64BB4200DB78F3 /* Goal.swift */; };
@@ -69,6 +70,7 @@
 		48C243292B8A609F00466839 /* Planting-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Planting-1.json"; sourceTree = "<group>"; };
 		48C2432A2B8A609F00466839 /* Planting-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Planting-3.json"; sourceTree = "<group>"; };
 		48C2432B2B8A609F00466839 /* Planting-4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Planting-4.json"; sourceTree = "<group>"; };
+		48C243302B8A6A0200466839 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		48CFD2DE2B64B35A00DB78F3 /* GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgress.swift; sourceTree = "<group>"; };
 		48CFD2E12B64B84800DB78F3 /* CardBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackground.swift; sourceTree = "<group>"; };
 		48CFD2E32B64BB4200DB78F3 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		489085712B70630300A607DF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				48C243302B8A6A0200466839 /* View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				4847D11F2B649EA400160F74 /* Entry.swift in Sources */,
 				48E549472B6059BB008184BA /* ContentView.swift in Sources */,
 				4847D11D2B64970500160F74 /* EntryEditorView.swift in Sources */,
+				48C243312B8A6A0200466839 /* View.swift in Sources */,
 				48FDF9D62B7D5D4700A87383 /* GoalDetailView.swift in Sources */,
 				48CFD2E62B656E8D00DB78F3 /* EntryDetailView.swift in Sources */,
 				48CFD2DF2B64B35A00DB78F3 /* GoalProgress.swift in Sources */,

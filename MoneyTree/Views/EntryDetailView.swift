@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Lottie
 
 struct EntryDetailView: View {
     
@@ -16,11 +17,13 @@ struct EntryDetailView: View {
     
     @State private var showingSheet = false
     
+    @State private var showAnimation = false
+    
     private func openGoalPicker() {
         showingSheet.toggle()
     }
     
-    var body: some View {
+    @ViewBuilder func list() -> some View {
         List {
             VStack (alignment: .leading) {
                 Text(entry.name).font(.title2).fontWeight(.medium)
@@ -60,7 +63,15 @@ struct EntryDetailView: View {
                 } else {
                     Button(action: openGoalPicker) {
                         Text("Contribute")
-                    }.sheet(isPresented: $showingSheet, content: {
+                    }.sheet(isPresented: $showingSheet, onDismiss: {
+                        if (entry.goal != nil) {
+                            showAnimation = true
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                showAnimation = false
+                            }
+                        }
+                    }, content: {
                         NavigationView {
                             GoalPicker(entry: entry)
                                 .navigationBarTitleDisplayMode(.inline)
@@ -88,9 +99,46 @@ struct EntryDetailView: View {
                 }
             }
         }
-        .padding(.top, 0)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar(.hidden, for: .tabBar)
+    }
+    
+    @ViewBuilder func successPrompt() -> some View {
+        VStack {
+            if (entry.goal != nil) {
+                switch true {
+                case entry.goal!.entries.count == 1:
+                    LottieView(animation: .named("Planting-1"))
+                        .playing(loopMode: .playOnce)
+                case entry.goal!.progress < 0.5:
+                    LottieView(animation: .named("Planting-2"))
+                        .playing(loopMode: .playOnce)
+                case entry.goal!.progress < 0.7:
+                    LottieView(animation: .named("Planting-3"))
+                        .playing(loopMode: .playOnce)
+                default:
+                    LottieView(animation: .named("Planting-4"))
+                        .playing(loopMode: .playOnce)
+                }
+            }
+        }.frame(width: getScreenSize().width / 1.5, height: getScreenSize().width / 1.5, alignment: .center)
+            .padding()
+            .shadow(radius: 8)
+            .onTapGesture {
+                showAnimation = false
+            }
+    }
+    
+    var body: some View {
+
+        ZStack {
+            list()
+                .padding(.top, 0)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar(.hidden, for: .tabBar)
+            
+            if (showAnimation) {
+                successPrompt()
+            }
+        }
     }
 }
 
@@ -126,6 +174,10 @@ struct EntryDetailView: View {
         notes: "Bought a wopper meal from Burger King, long long text",
         date: Date()
     )
+    
+    let goal = Goal(name: "Tesla", target: 129200.0, deadline: Date())
+    
+    container.mainContext.insert(goal)
     
     
     return NavigationStack {
