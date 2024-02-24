@@ -21,6 +21,7 @@
 		48C2432E2B8A609F00466839 /* Planting-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 48C2432A2B8A609F00466839 /* Planting-3.json */; };
 		48C2432F2B8A609F00466839 /* Planting-4.json in Resources */ = {isa = PBXBuildFile; fileRef = 48C2432B2B8A609F00466839 /* Planting-4.json */; };
 		48C243312B8A6A0200466839 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C243302B8A6A0200466839 /* View.swift */; };
+		48C243362B8A77DD00466839 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C243352B8A77DD00466839 /* Settings.swift */; };
 		48CFD2DF2B64B35A00DB78F3 /* GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2DE2B64B35A00DB78F3 /* GoalProgress.swift */; };
 		48CFD2E22B64B84800DB78F3 /* CardBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2E12B64B84800DB78F3 /* CardBackground.swift */; };
 		48CFD2E42B64BB4200DB78F3 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CFD2E32B64BB4200DB78F3 /* Goal.swift */; };
@@ -71,6 +72,7 @@
 		48C2432A2B8A609F00466839 /* Planting-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Planting-3.json"; sourceTree = "<group>"; };
 		48C2432B2B8A609F00466839 /* Planting-4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Planting-4.json"; sourceTree = "<group>"; };
 		48C243302B8A6A0200466839 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		48C243352B8A77DD00466839 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		48CFD2DE2B64B35A00DB78F3 /* GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgress.swift; sourceTree = "<group>"; };
 		48CFD2E12B64B84800DB78F3 /* CardBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackground.swift; sourceTree = "<group>"; };
 		48CFD2E32B64BB4200DB78F3 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				1437F1B62B7B518700B4D6A6 /* TreeView.swift */,
 				489085792B7D438500A607DF /* GoalPicker.swift */,
 				48FDF9D52B7D5D4700A87383 /* GoalDetailView.swift */,
+				48C243352B8A77DD00466839 /* Settings.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				489085752B70643E00A607DF /* StatisticView.swift in Sources */,
 				1437F1B52B7B516B00B4D6A6 /* AddTreeFormView.swift in Sources */,
 				489085702B70610200A607DF /* MainView.swift in Sources */,
+				48C243362B8A77DD00466839 /* Settings.swift in Sources */,
 				48E549492B6059BB008184BA /* Item.swift in Sources */,
 				4890857A2B7D438500A607DF /* GoalPicker.swift in Sources */,
 				143182C62B7AFC88003D71F9 /* GoalEditorView.swift in Sources */,
