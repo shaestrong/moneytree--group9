@@ -41,7 +41,7 @@ struct GoalDetailView: View {
         }
         
         _sections = SectionedQuery(\.day, filter: filter,
-                                                  sort: [SortDescriptor(\.date, order: .reverse)])
+                                    sort: [SortDescriptor(\.date, order: .reverse)])
     }
     
     private var formattedDate: String {
@@ -59,22 +59,26 @@ struct GoalDetailView: View {
             List {
                 Section {
                     VStack (alignment: .center) {
-                        LottieView(animation: .named("Planting"))
+                        LottieView(animation: .named("Planting-1"))
                             .looping()
                             .frame(width: geometry.size.width / 2)
                             .padding(.bottom, 48)
                         
                         Text(goal.name)
-                            .font(.title)
-                            .fontWeight(.medium)
+                            .font(.title2)
+                            .fontWeight(.black)
                             .padding(.bottom, 4)
                         
                         HStack (alignment: .center, spacing: 4) {
                             Image(systemName: "clock")
-                                .font(.callout)
+                                .font(.subheadline)
+                                .fontWeight(.medium)
                             Text(formattedDate)
-                                .font(.callout)
+                                .font(.subheadline)
+                                .fontWeight(.medium)
                         }.padding(.bottom, 24)
+                        
+                        
                         
                         VStack (alignment: .center) {
                             Text(getMotivationString()).font(.headline)
@@ -98,10 +102,9 @@ struct GoalDetailView: View {
                                 .foregroundColor(.green)
                                 .opacity(0.2)
                         }
+                        .padding()
                     }
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    .listRowBackground(Color.clear)
-                    
                 }
                 
                 ForEach(sections) { section in
@@ -120,11 +123,11 @@ struct GoalDetailView: View {
                 }
             }
         }.navigationTitle(goal.name)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar(.hidden, for: .tabBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden, for: .tabBar)
     }
 }
 
 #Preview {
-    GoalDetailView(goal: Goal(name: "Test Goal", target: 100, deadline: Date()))
+    GoalDetailView(goal: Goal(name: "Test Goal long long long", target: 100, deadline: Date()))
 }
