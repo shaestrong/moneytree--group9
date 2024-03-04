@@ -69,7 +69,7 @@ struct GoalProgress: View {
                 Text(goal.name).font(.title2).fontWeight(.medium)
                 Spacer()
                 Text("Goal: \(formattedDate)")
-                Text("\(goal.current, specifier: "%.2f")/\(goal.target, specifier: "%.2f")")
+                Text("$\(goal.current, specifier: "%.2f")/$\(goal.target, specifier: "%.2f")")
                     .font(.subheadline)
                 ProgressView(value: goal.current / goal.target)
                     .progressViewStyle(RoundedRectProgressViewStyle())
