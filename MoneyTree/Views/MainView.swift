@@ -80,6 +80,8 @@ struct MainView: View {
                 .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 .listRowBackground(Color.clear)
                 
+                TipsView()
+                
                 ForEach(sections) { section in
                     Section(header: Text(section.id)) {
                         ForEach(section) { item in

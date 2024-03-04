@@ -10,56 +10,55 @@ import Foundation
 struct Tips {
     
     private static var en = [
-        "Start saving early and consistently.",
-        "Understand the difference between needs and wants.",
-        "Set specific financial goals and work towards achieving them.",
-        "Always look for ways to save money, like using coupons or shopping sales.",
-        "Learn about budgeting and track your expenses.",
-        "Avoid impulse buying and think carefully before making a purchase.",
-        "Consider investing your money for long-term growth.",
-        "Earn and save money through chores or a part-time job.",
-        "Don’t be afraid to ask questions about money and personal finance.",
-        "Be mindful of your spending habits and avoid unnecessary expenses.",
-        "Learn to prioritize your financial goals and make smart choices.",
-        "Start a savings account and watch your money grow.",
-        "Always read the fine print before signing any financial agreements.",
-        "Seek guidance from a trusted adult or financial advisor when needed.",
-        "Set up a budget for your allowances and stick to it.",
-        "Take advantage of educational resources on money management.",
-        "Compare prices and look for the best deals before making a purchase.",
-        "Avoid borrowing money unless absolutely necessary.",
-        "Learn the basics of interest rates and how they affect your savings.",
-        "Consider the long-term implications of your financial decisions.",
-        "Stay informed about the current state of the economy and how it may impact your finances.",
-        "Save a portion of any money received as a gift or allowance.",
-        "Consider starting a small business or selling items to earn extra income.",
-        "Invest in your education and future earning potential.",
-        "Prepare for unexpected expenses by building an emergency fund.",
-        "Avoid falling into the trap of keeping up with others’ spending habits.",
-        "Learn about the concept of compound interest and how it can work in your favor.",
-        "Seek out financial literacy programs or workshops to improve your knowledge.",
-        "Learn to negotiate and advocate for yourself in financial matters.",
-        "Teach others about the importance of financial responsibility and good money habits.",
-        "Find ways to make money work for you through smart investments.",
-        "Consider the environmental and social impact of your purchases.",
-        "Learn to distinguish between short-term gratification and long-term financial security.",
-        "Be wary of scams and fraudulent financial schemes.",
-        "Think about the value of experiences over material possessions.",
-        "Consider the costs and benefits of higher education and student loans.",
-        "Save a portion of your earnings for charitable donations or giving back to the community.",
-        "Build a strong credit history by using credit responsibly.",
-        "Consider the importance of insurance in protecting your financial well-being.",
-        "Take risks and explore new opportunities for financial growth.",
-        "Learn to set boundaries and say ‘no’ to unnecessary purchases.",
-        "Avoid comparing yourself to others based on material possessions.",
-        "Practice patience and discipline in your financial decisions.",
-        "Seek out mentors or role models who can offer guidance on financial matters.",
-        "Be mindful of the environmental impact of your financial choices.",
-        "Invest in experiences and relationships that bring long-term happiness.",
-        "Consider the impact of your financial decisions on future generations.",
-        "Take responsibility for your financial future and work towards financial independence.",
-        "Stay informed about changes in the financial landscape and adapt accordingly.",
-        "Remember that financial success is not just about wealth, but also about happiness and fulfillment."
+        "Save a bit of your allowance each week 🌱, watch it grow like a money garden!",
+        "Set a savings goal for something special you really want 🎯.",
+        "Learn the difference between 'I need it' and 'I want it' 🤔.",
+        "Ask your parents for a cool piggy bank 🐷, it makes saving fun!",
+        "Earn extra money by helping with chores or small tasks 💼.",
+        "Create a simple budget to keep track of your spending and saving 📊.",
+        "Before buying a toy, think about how much joy it will bring you 😊.",
+        "Build a savings cushion for unexpected expenses 💰, be prepared!",
+        "Don’t be shy—ask your family or friends for money-saving tips 💡.",
+        "Save a portion of any gift money you receive 🎁.",
+        "Start with small savings and watch them add up over time ⏳.",
+        "Set a goal to save for a fun outing with your friends 🚀.",
+        "Look for discounts and sales, it's like finding hidden treasures! 💎",
+        "Consider opening a savings account 💼, it's a smart money move!",
+        "Use jars to organize your money—label them for saving, spending, and sharing 🏦.",
+        "Compare prices before making a purchase to get the best deal 💸.",
+        "Avoid borrowing money unless it's really necessary 🚫.",
+        "Learn about interest rates and how they can help your savings grow 📈.",
+        "Think about the long-term impact of your spending decisions 🤔.",
+        "Stay informed about money matters, it's your superpower! 🦸‍♂️",
+        "Save a little from your allowance for future big purchases 🛍️.",
+        "Consider starting a small business, like selling handmade crafts 🛠️.",
+        "Invest in learning new things, it's an investment in yourself 📘!",
+        "Build an emergency fund for unexpected expenses 💼.",
+        "Avoid trying to keep up with others, be happy with what you have 😊.",
+        "Understand the concept of compound interest, it's like a savings booster! ⚡",
+        "Join financial literacy programs to improve your money skills 🎓.",
+        "Negotiate with your parents for fair allowances and rewards 🤝.",
+        "Teach your friends about saving money and making wise choices 🧠.",
+        "Make your money work for you by saving and investing wisely 🌐.",
+        "Think about the environmental impact of your purchases 🌍.",
+        "Distinguish between short-term wants and long-term financial goals 🎯.",
+        "Be cautious of scams and fraudulent schemes, protect your money! 🚨",
+        "Value experiences over material possessions for lasting happiness 🌈.",
+        "Consider the costs and benefits of education and student loans 🎓.",
+        "Save a portion of your earnings for charity or helping others 🤲.",
+        "Build a good reputation with your money, be responsible and honest 🌟.",
+        "Consider the importance of insurance in protecting your future 🛡️.",
+        "Explore new opportunities for financial growth and learning 🚀.",
+        "Learn to say 'no' to unnecessary purchases and focus on essentials 🚫.",
+        "Avoid comparing yourself to others, everyone's financial journey is unique 🌟.",
+        "Practice patience and discipline in managing your money 🧘.",
+        "Seek advice from trustworthy adults or mentors on financial matters 🤝.",
+        "Be mindful of the environmental impact of your financial choices 🌳.",
+        "Invest in experiences and relationships that bring long-term joy 💖.",
+        "Consider the impact of your financial decisions on future generations 🌐.",
+        "Take responsibility for your financial future and enjoy the journey 🚀.",
+        "Stay informed about changes in the financial world and adapt accordingly 📰.",
+        "Remember, financial success is not just about money, it's about happiness and fulfillment 🌟."
     ]
     
     private static var zhs = [
@@ -82,7 +81,7 @@ struct Tips {
         "在购物前比较价格，寻找最优惠的价格",
         "除非万不得已，避免借钱",
         "了解利率的基本知识以及利率对储蓄的影响",
-                
+        
         "考虑财务决策的长期影响",
         "随时了解当前的经济状况及其可能对您的财务产生的影响",
         "将收到的礼物或零用钱的一部分存起来",
@@ -142,17 +141,75 @@ struct Tips {
         "考慮高等教育和學生貸款的成本和收益",
     ]
     
+    private static var es = [
+        "Ahorra un poco de tu asignación cada semana 🌱, ¡míralo crecer como un jardín de dinero!",
+        "Establece un objetivo de ahorro para algo especial que realmente deseas 🎯.",
+        "Aprende la diferencia entre 'Lo necesito' y 'Lo quiero' 🤔.",
+        "Pídele a tus padres una alcancía genial 🐷, ¡hace que ahorrar sea divertido!",
+        "Gana dinero extra ayudando con quehaceres o tareas pequeñas 💼.",
+        "Crea un presupuesto simple para llevar un registro de tus gastos y ahorros 📊.",
+        "Antes de comprar un juguete, piensa en cuánta alegría te traerá 😊.",
+        "Construye un colchón de ahorros para gastos inesperados 💰, ¡estate preparado!",
+        "No seas tímido, pídele a tu familia o amigos consejos para ahorrar dinero 💡.",
+        "Ahorra una parte de cualquier dinero que recibas como regalo 🎁.",
+        "Comienza con pequeños ahorros y míralos sumarse con el tiempo ⏳.",
+        "Establece un objetivo para ahorrar para una salida divertida con tus amigos 🚀.",
+        "¡Busca descuentos y ofertas, es como encontrar tesoros escondidos! 💎",
+        "Considera abrir una cuenta de ahorros 💼, ¡es una movida financiera inteligente!",
+        "Usa frascos para organizar tu dinero, etiquétalos para ahorros, gastos y compartir 🏦.",
+        "Compara precios antes de realizar una compra para obtener la mejor oferta 💸.",
+        "Evita pedir dinero prestado a menos que sea realmente necesario 🚫.",
+        "Aprende sobre las tasas de interés y cómo pueden ayudar a que tus ahorros crezcan 📈.",
+        "Piensa en el impacto a largo plazo de tus decisiones de gasto 🤔.",
+        "Mantente informado sobre temas financieros, ¡es tu superpoder! 🦸‍♂️",
+        "Ahorra un poco de tu asignación para compras grandes en el futuro 🛍️.",
+        "Considera comenzar un pequeño negocio, como vender manualidades hechas a mano 🛠️.",
+        "Invierte en aprender cosas nuevas, ¡es una inversión en ti mismo 📘!",
+        "Crea un fondo de emergencia para gastos inesperados 💼.",
+        "Evita tratar de seguir el ritmo de los demás, sé feliz con lo que tienes 😊.",
+        "Entiende el concepto de interés compuesto, ¡es como un potenciador de ahorros! ⚡",
+        "Únete a programas de educación financiera para mejorar tus habilidades financieras 🎓.",
+        "Negocia con tus padres para obtener asignaciones y recompensas justas 🤝.",
+        "Enseña a tus amigos sobre cómo ahorrar dinero y tomar decisiones sabias 🧠.",
+        "Haz que tu dinero trabaje para ti ahorrando e invirtiendo sabiamente 🌐.",
+        "Piensa en el impacto ambiental de tus compras 🌍.",
+        "Distingue entre deseos a corto plazo y metas financieras a largo plazo 🎯.",
+        "Ten precaución con estafas y esquemas financieros fraudulentos, ¡protege tu dinero! 🚨",
+        "Valora experiencias sobre posesiones materiales para una felicidad duradera 🌈.",
+        "Considera los costos y beneficios de la educación y los préstamos estudiantiles 🎓.",
+        "Ahorra una parte de tus ganancias para caridad o ayudar a otros 🤲.",
+        "Construye una buena reputación con tu dinero, sé responsable y honesto 🌟.",
+        "Considera la importancia del seguro para proteger tu futuro 🛡️.",
+        "Explora nuevas oportunidades para el crecimiento financiero y el aprendizaje 🚀.",
+        "Aprende a decir 'no' a compras innecesarias y concéntrate en lo esencial 🚫.",
+        "Evita compararte con los demás, ¡el viaje financiero de cada uno es único 🌟.",
+        "Practica la paciencia y la disciplina en la gestión de tu dinero 🧘.",
+        "Busca consejo de adultos o mentores de confianza sobre asuntos financieros 🤝.",
+        "Sé consciente del impacto ambiental de tus decisiones financieras 🌳.",
+        "Invierte en experiencias y relaciones que traigan alegría a largo plazo 💖.",
+        "Considera el impacto de tus decisiones financieras en las generaciones futuras 🌐.",
+        "Asume la responsabilidad de tu futuro financiero y disfruta del viaje 🚀.",
+        "Mantente informado sobre los cambios en el mundo financiero y adáptate en consecuencia 📰.",
+        "Recuerda, el éxito financiero no solo se trata de dinero, ¡también es felicidad y realización 🌟."
+    ]
+    
     private static func random() -> String {
         // get current device language
         let preferredLanguage = Locale.preferredLanguages[0]
         
         return switch preferredLanguage {
-            case "zh-Hant":
-                zht.randomElement()
-            case "zh-Hans":
-                zhs.randomElement()
-            default:
-                en.randomElement()
+        case "zh-Hant":
+            zht.randomElement() ?? ""
+        case "zh-Hans":
+            zhs.randomElement() ?? ""
+        case let lang where lang.hasPrefix("es"):
+            es.randomElement() ?? ""
+        default:
+            en.randomElement() ?? ""
         }
+    }
+    
+    public static func getRandomTip() -> String {
+        return random()
     }
 }
