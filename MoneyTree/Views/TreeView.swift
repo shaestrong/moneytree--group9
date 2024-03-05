@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import Lottie
 
 struct TreeView: View {
     @Environment(\.modelContext) private var modelContext
@@ -9,6 +10,32 @@ struct TreeView: View {
     @State private var selectedTree: Goal?
     
     @Query private var goals: [Goal]
+    
+    private func getImageTree(goal:Goal) -> some View{
+        switch goal.progress {
+            case 0..<0.4:
+                return LottieView(animation: .named("Planting-1"))
+                    .currentProgress(1)
+                    .frame(maxHeight: 100)
+            case 0.4..<0.7:
+                return LottieView(animation: .named("Planting-2"))
+                    .currentProgress(1)
+                    .frame(maxHeight: 100)
+            case 0.7..<1:
+                return LottieView(animation: .named("Planting-3"))
+                    .currentProgress(1)
+                    .frame(maxHeight: 100)
+            case 1:
+                return LottieView(animation: .named("Planting-4"))
+                    .currentProgress(1)
+                    .frame(maxHeight: 100)
+            default:
+                return LottieView(animation: .named("Planting-1"))
+                .currentProgress(1)
+                .frame(maxHeight: 100)
+            }
+        
+    }
     
     var body: some View {
         VStack {
@@ -26,10 +53,8 @@ struct TreeView: View {
                                     .fill(Color.white)
                                     .shadow(radius: 5)
                                     .frame(width: 150, height: 150)
-                                Image(systemName: "tree")
-                                    .font(.system(size: 75))
-                                    .foregroundColor(.green)
-                                    .padding(10)
+                                getImageTree(goal:goal)
+                                    .id("\(Date())")
                                 
                                 Button(action: {
                                     selectedTree = goal

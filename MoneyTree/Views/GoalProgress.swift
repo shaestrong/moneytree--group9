@@ -57,10 +57,8 @@ struct CircularProgressViewStyle: ProgressViewStyle {
  
 
 struct GoalProgress: View {
-    //@State var progress = 0.5
     @State var goal : Goal
-    @State private var showingGoalSheet = false
-    
+
     var body: some View {
         NavigationLink {
             GoalDetailView(goal: goal)
@@ -71,15 +69,12 @@ struct GoalProgress: View {
                 Text("Goal: \(formattedDate)")
                 Text("$\(goal.current, specifier: "%.2f")/$\(goal.target, specifier: "%.2f")")
                     .font(.subheadline)
-                ProgressView(value: goal.current / goal.target)
+                ProgressView(value: goal.progress)
                     .progressViewStyle(RoundedRectProgressViewStyle())
             }
             .padding()
             .card()
             .foregroundColor(.primary)
-            //        .sheet(isPresented: $showingGoalSheet, content: {
-            //            AddTreeFormView(isPresented: $showingGoalSheet, goal: goal)
-            //        })
         }
     }
     
@@ -87,10 +82,6 @@ struct GoalProgress: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: goal.deadline)
-    }
-    
-    private func editGoal() {
-        showingGoalSheet.toggle()
     }
 }
 

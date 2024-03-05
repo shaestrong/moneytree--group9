@@ -50,6 +50,8 @@ struct MainView: View {
                             ForEach(goals) { goal in
                                 GoalProgress(goal: goal)
                                     .frame(width: cardWidth, height: 150)
+                                    .id("\(Date())")
+                               
                              }
                         }
                     
