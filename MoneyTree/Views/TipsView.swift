@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TipsView: View {
+    
+    @State var tip = Tips.getRandomTip()
+    
     var body: some View {
         Section {
             HStack {
@@ -21,7 +24,7 @@ struct TipsView: View {
                         .fontWeight(.black)
                         .foregroundStyle(.customGreen)
                     
-                    Text(Tips.getRandomTip())
+                    Text(tip)
                         .foregroundStyle(.customGreen)
                         .font(.footnote)
                 }
@@ -34,6 +37,9 @@ struct TipsView: View {
                .fill(Color.green.opacity(0.1))
                .strokeBorder(Color.customGreen, lineWidth: 1)
         )
+        .onAppear {
+            tip = Tips.getRandomTip()
+        }
        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
 }
