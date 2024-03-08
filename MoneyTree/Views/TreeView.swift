@@ -73,6 +73,7 @@ struct TreeView: View {
                                 .font(.headline)
                                 .foregroundColor(.gray)
                                 .padding(.bottom, 5)
+                                .lineLimit(1)
                             
                             Text("$\(goal.target, specifier: "%.2f")")
                                 .font(.subheadline)
