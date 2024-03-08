@@ -11,6 +11,8 @@ import Lottie
 
 struct EntryDetailView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @Bindable var entry : Entry
     
     @Environment(\.modelContext) var modelContext
@@ -18,6 +20,8 @@ struct EntryDetailView: View {
     @State private var showingSheet = false
     
     @State private var showAnimation = false
+    
+    @State private var showingAlert = false
     
     private func openGoalPicker() {
         showingSheet.toggle()
@@ -95,7 +99,21 @@ struct EntryDetailView: View {
                     )).opacity(0)
                 )
                 Button("Remove", role: .destructive) {
-                    modelContext.delete(entry)
+                    showingAlert.toggle()
+                }
+                /*.background(
+                    navigationDestination(isPresented: $shouldNavigateBack, destination: MainView())
+                    )*/
+                .alert(isPresented: $showingAlert) {
+                    Alert(
+                        title: Text("Remove Entry"),
+                        message: Text("Are you sure you want to remove this entry?"),
+                        primaryButton: .destructive(Text("Remove")) {
+                            modelContext.delete(entry)
+                            dismiss()
+                        },
+                        secondaryButton: .cancel()
+                    )
                 }
             }
         }

@@ -20,6 +20,8 @@ struct MainView: View {
 
     @State private var showingSheet = false
     @State private var showingGoalSheet = false
+    @State private var showingAlert = false
+    @State private var deleteEntry: Entry?
     
     private var cardWidth = UIScreen.main.bounds.size.width / 2 - 24
     
@@ -97,11 +99,23 @@ struct MainView: View {
                             }
                         }
                         .onDelete { indexSet in
-                            withAnimation {
-                                for index in indexSet {
-                                    modelContext.delete(section[index])
-                                }
+                            
+                            for index in indexSet {
+                                //modelContext.delete(section[index])
+                                self.showingAlert = true
+                                self.deleteEntry = section[index]
                             }
+                            
+                            
+                        }
+                        .alert(isPresented: self.$showingAlert) {
+                            _ = self.deleteEntry!
+                            return  Alert(title: Text("Delete Entry"), message: Text("Are you sure you want to delete this Entry?"), primaryButton: .destructive(Text("Delete")) {
+                                withAnimation {
+                                    modelContext.delete(deleteEntry!)
+                                }
+                                
+                            }, secondaryButton: .cancel())
                         }
                     }
                 }

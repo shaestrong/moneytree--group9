@@ -12,6 +12,7 @@ struct GoalPicker: View {
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
+    @State private var showingAlert = false
     
     var entry: Entry
     
@@ -34,12 +35,22 @@ struct GoalPicker: View {
             
             // remove the goal
             Button("Remove contribution", role: .destructive) {
-                entry.goal = nil
-                dismiss()
+                showingAlert.toggle()
             }
         }.navigationTitle(entry.goal != nil ? "Change a Goal" : "Select a Goal")
          .navigationBarTitleDisplayMode(.inline)
          .toolbar(.hidden, for: .tabBar)
+         .alert(isPresented: $showingAlert) {
+             Alert(
+                 title: Text("Remove Contribution"),
+                 message: Text("Are you sure you want to remove this contribution?"),
+                 primaryButton: .destructive(Text("Remove")) {
+                     entry.goal = nil
+                     dismiss()
+                 },
+                 secondaryButton: .cancel()
+             )
+         }
     }
 }
 

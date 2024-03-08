@@ -24,6 +24,8 @@ struct EntryEditorView: View {
     
     @State var entry: Entry?
     
+    @State private var isSaveDisabled = true
+    
     private func addEntry() {
         if (entry == nil) {
             entry = Entry(timestamp: Date(), entryType: entryType, amount: amount, name: name, notes: notes, date: date)
@@ -39,6 +41,10 @@ struct EntryEditorView: View {
         dismiss()
     }
     
+    private func updateSaveButtonState() {
+        isSaveDisabled = name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || amount == 0
+    }
+    
     var body: some View {
         VStack {
             // below is a segment control to switch income / expense
@@ -51,9 +57,15 @@ struct EntryEditorView: View {
             // create a list of input
             Form {
                 TextField("Name", text: $name)
+                    .onChange(of: name) {
+                        updateSaveButtonState()
+                    }
                 
                 TextField("Amount", value: $amount, format: .currency(code: "CAD"))
                     .keyboardType(.decimalPad)
+                    .onChange(of: amount) {
+                        updateSaveButtonState()
+                    }
                 
                 DatePicker("Date", selection: $date, displayedComponents: .date)
             
@@ -72,6 +84,7 @@ struct EntryEditorView: View {
              .buttonStyle(.borderedProminent)
              .padding(.horizontal)
              .padding(.vertical, 8)
+             .disabled(isSaveDisabled)
         }.navigationTitle(entry == nil ? "Add Entry" : "Edit")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(.hidden, for: .tabBar)
@@ -83,6 +96,7 @@ struct EntryEditorView: View {
                     notes = entry.notes
                     date = entry.date
                 }
+                updateSaveButtonState()
             }
     }
 }
