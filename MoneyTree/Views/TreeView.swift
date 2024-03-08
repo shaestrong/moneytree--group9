@@ -25,7 +25,7 @@ struct TreeView: View {
                 return LottieView(animation: .named("Planting-3"))
                     .currentProgress(1)
                     .frame(maxHeight: 100)
-            case 1:
+        case 1...:
                 return LottieView(animation: .named("Planting-4"))
                     .currentProgress(1)
                     .frame(maxHeight: 100)
