@@ -19,7 +19,7 @@ struct ContentView: View {
             
             StatisticView(month: Date.now)
                 .tabItem {
-                    Label("Statistic", systemImage: "chart.bar.xaxis")
+                    Label("Statistics", systemImage: "chart.bar.xaxis")
                 }
             TreeView()
                 .tabItem {

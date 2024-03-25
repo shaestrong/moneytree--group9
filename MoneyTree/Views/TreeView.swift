@@ -11,30 +11,29 @@ struct TreeView: View {
     
     @Query private var goals: [Goal]
     
-    private func getImageTree(goal:Goal) -> some View{
+    private func getImageTree(goal: Goal) -> some View {
         switch goal.progress {
-            case 0..<0.4:
-                return LottieView(animation: .named("Planting-1"))
-                    .currentProgress(1)
-                    .frame(maxHeight: 100)
-            case 0.4..<0.7:
-                return LottieView(animation: .named("Planting-2"))
-                    .currentProgress(1)
-                    .frame(maxHeight: 100)
-            case 0.7..<1:
-                return LottieView(animation: .named("Planting-3"))
-                    .currentProgress(1)
-                    .frame(maxHeight: 100)
-        case 1...:
-                return LottieView(animation: .named("Planting-4"))
-                    .currentProgress(1)
-                    .frame(maxHeight: 100)
-            default:
-                return LottieView(animation: .named("Planting-1"))
+        case 0..<0.4:
+            return LottieView(animation: .named("Planting-1"))
                 .currentProgress(1)
                 .frame(maxHeight: 100)
-            }
-        
+        case 0.4..<0.7:
+            return LottieView(animation: .named("Planting-2"))
+                .currentProgress(1)
+                .frame(maxHeight: 100)
+        case 0.7..<1:
+            return LottieView(animation: .named("Planting-3"))
+                .currentProgress(1)
+                .frame(maxHeight: 100)
+        case 1...:
+            return LottieView(animation: .named("Planting-4"))
+                .currentProgress(1)
+                .frame(maxHeight: 100)
+        default:
+            return LottieView(animation: .named("Planting-1"))
+                .currentProgress(1)
+                .frame(maxHeight: 100)
+        }
     }
     
     var body: some View {
@@ -44,7 +43,7 @@ struct TreeView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
-             
+                
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
                     ForEach(goals) { goal in
                         VStack {
@@ -53,7 +52,7 @@ struct TreeView: View {
                                     .fill(Color.white)
                                     .shadow(radius: 5)
                                     .frame(width: 150, height: 150)
-                                getImageTree(goal:goal)
+                                getImageTree(goal: goal)
                                     .id("\(Date())")
                                 
                                 Button(action: {
@@ -82,8 +81,7 @@ struct TreeView: View {
                     }
                 }
                 .padding()
-            }
-            else {
+            } else {
                 ZStack {
                     Circle()
                         .fill(Color.green)
@@ -144,15 +142,12 @@ struct TreeView: View {
                 }
                 .padding(.bottom, 20)
                 .sheet(isPresented: $showTreeForm) {
-                    AddTreeFormView(isPresented: $showTreeForm) 
+                    AddTreeFormView(isPresented: $showTreeForm)
                 }
             }
         }
         .padding(.top, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        /*.background(
-            viewModel.isFormVisible ? Color.clear : Color.white
-        )*/
         .alert(isPresented: $showDeleteAlert) {
             Alert(title: Text("Delete Tree"), message: Text("Are you sure you want to delete this tree?"), primaryButton: .destructive(Text("Delete")) {
                 if let goal = selectedTree {
@@ -163,23 +158,25 @@ struct TreeView: View {
     }
 }
 
-#Preview {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Entry.self,
-            Goal.self
-        ])
-        
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+struct TreeView_Previews: PreviewProvider {
+    static var previews: some View {
+        let sharedModelContainer: ModelContainer = {
+            let schema = Schema([
+                Entry.self,
+                Goal.self
+            ])
+            
+            let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
     
-   return TreeView()
-        .modelContainer(sharedModelContainer)
-
+            do {
+                return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            } catch {
+                fatalError("Could not create ModelContainer: \(error)")
+            }
+        }()
+        
+        return TreeView()
+            .modelContainer(sharedModelContainer)
+    }
 }
+

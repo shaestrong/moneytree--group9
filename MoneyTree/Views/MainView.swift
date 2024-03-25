@@ -22,6 +22,8 @@ struct MainView: View {
     @State private var showingGoalSheet = false
     @State private var showingAlert = false
     @State private var deleteEntry: Entry?
+    @State private var didAddFirstGoal = false // Track if the user added a goal for the first time
+    @State private var didEarnFirstBadge = false // Track if the user earned the first badge
     
     private var cardWidth = UIScreen.main.bounds.size.width / 2 - 24
     
@@ -30,34 +32,33 @@ struct MainView: View {
             List {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack (spacing: 16) {
-                      if goals.isEmpty {
-                          VStack (spacing: 8) {
-                              Image(systemName: "dollarsign.circle")
-                                  .resizable()
-                                  .frame(width: 32, height: 32)
-                                  .imageScale(.large)
-                                  .foregroundColor(.green)
-                              Text("Oops, no trees found!")
-                                  .fontWeight(.bold)
-                                  .multilineTextAlignment(.center)
-                              Text("Create some cool goals!")
-                                  .font(.caption)
-                                  .foregroundColor(.gray)
-                
-                          }
-                          .padding()
-                          .frame(width: cardWidth, height: 150)
-                          .card()
+                        // Card views for goals
+                        if goals.isEmpty && !didAddFirstGoal {
+                            VStack (spacing: 8) {
+                                Image(systemName: "dollarsign.circle")
+                                    .resizable()
+                                    .frame(width: 32, height: 32)
+                                    .imageScale(.large)
+                                    .foregroundColor(.green)
+                                Text("Oops, no trees found!")
+                                    .fontWeight(.bold)
+                                    .multilineTextAlignment(.center)
+                                Text("Create some cool goals!")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding()
+                            .frame(width: cardWidth, height: 150)
+                            .card()
                         } else {
                             ForEach(goals) { goal in
                                 GoalProgress(goal: goal)
                                     .frame(width: cardWidth, height: 150)
                                     .id("\(Date())")
-                               
-                             }
+                            }
                         }
-                    
-                        // start of add
+                        
+                        // Button to add a new goal
                         Button(action: addGoal) {
                             VStack (spacing: 8) {
                                 Image(systemName: "plus.circle")
@@ -72,20 +73,31 @@ struct MainView: View {
                             .padding()
                             .frame(width: cardWidth, height: 150)
                             .card()
-                            // end of add
                         }
                         .sheet(isPresented: $showingGoalSheet, content: {
-                            AddTreeFormView(isPresented: $showingGoalSheet) 
+                            AddTreeFormView(isPresented: $showingGoalSheet)
                         })
-                       
                     }
-                   
                 }
                 .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 .listRowBackground(Color.clear)
                 
                 TipsView()
                 
+                // Badges section header
+                if didEarnFirstBadge {
+                    Section(header: Text("Badges")) {
+                        FirstTreeBadgeView()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                } else if !goals.isEmpty {
+                    Section(header: Text("No Badges Earned Yet")) {
+                        Text("Add a goal to earn your first badge!")
+                            .foregroundColor(.gray)
+                    }
+                }
+                
+                // Entry list
                 ForEach(sections) { section in
                     Section(header: Text(section.id)) {
                         ForEach(section) { item in
@@ -99,14 +111,10 @@ struct MainView: View {
                             }
                         }
                         .onDelete { indexSet in
-                            
                             for index in indexSet {
-                                //modelContext.delete(section[index])
                                 self.showingAlert = true
                                 self.deleteEntry = section[index]
                             }
-                            
-                            
                         }
                         .alert(isPresented: self.$showingAlert) {
                             _ = self.deleteEntry!
@@ -114,7 +122,6 @@ struct MainView: View {
                                 withAnimation {
                                     modelContext.delete(deleteEntry!)
                                 }
-                                
                             }, secondaryButton: .cancel())
                         }
                     }
@@ -138,6 +145,11 @@ struct MainView: View {
                 }
             }
         }
+        .onAppear {
+            if !goals.isEmpty {
+                didAddFirstGoal = true
+            }
+        }
     }
     
     private func addEntry() {
@@ -147,14 +159,6 @@ struct MainView: View {
     private func addGoal() {
         showingGoalSheet.toggle()
     }
-    //
-    //    private func deleteEntries(offsets: IndexSet) {
-    //        withAnimation {
-    //            for index in offsets {
-    //                // modelContext.delete(entries[index])
-    //            }
-    //        }
-    //    }
 }
 
 

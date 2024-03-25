@@ -40,6 +40,9 @@
 		48E549642B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E549632B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift */; };
 		48FDF9D62B7D5D4700A87383 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FDF9D52B7D5D4700A87383 /* GoalDetailView.swift */; };
 		48FDF9D92B7F096D00A87383 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 48FDF9D82B7F096D00A87383 /* Lottie */; };
+		F04654FA2BB0E0A000D441DC /* FirstGrownTreeBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04654F92BB0E0A000D441DC /* FirstGrownTreeBadgeView.swift */; };
+		F0830F152BACB62D001A349B /* ThreeDaysBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0830F142BACB62D001A349B /* ThreeDaysBadgeView.swift */; };
+		F0830F182BACB663001A349B /* FirstTreeBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0830F172BACB663001A349B /* FirstTreeBadgeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +97,9 @@
 		48E549612B6059BD008184BA /* MoneyTreeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTreeUITests.swift; sourceTree = "<group>"; };
 		48E549632B6059BD008184BA /* MoneyTreeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTreeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		48FDF9D52B7D5D4700A87383 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
+		F04654F92BB0E0A000D441DC /* FirstGrownTreeBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstGrownTreeBadgeView.swift; sourceTree = "<group>"; };
+		F0830F142BACB62D001A349B /* ThreeDaysBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDaysBadgeView.swift; sourceTree = "<group>"; };
+		F0830F172BACB663001A349B /* FirstTreeBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTreeBadgeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,7 @@
 				48FDF9D52B7D5D4700A87383 /* GoalDetailView.swift */,
 				48C243352B8A77DD00466839 /* Settings.swift */,
 				14B3FDF12B9665E00088BE07 /* TipsView.swift */,
+				F0830F162BACB63E001A349B /* Badges */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,6 +264,16 @@
 				48C2432B2B8A609F00466839 /* Planting-4.json */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		F0830F162BACB63E001A349B /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+				F0830F142BACB62D001A349B /* ThreeDaysBadgeView.swift */,
+				F0830F172BACB663001A349B /* FirstTreeBadgeView.swift */,
+				F04654F92BB0E0A000D441DC /* FirstGrownTreeBadgeView.swift */,
+			);
+			path = Badges;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +422,7 @@
 				48CFD2E92B6570E900DB78F3 /* MoneyText.swift in Sources */,
 				48CFD2E42B64BB4200DB78F3 /* Goal.swift in Sources */,
 				4847D11F2B649EA400160F74 /* Entry.swift in Sources */,
+				F0830F152BACB62D001A349B /* ThreeDaysBadgeView.swift in Sources */,
 				48E549472B6059BB008184BA /* ContentView.swift in Sources */,
 				4847D11D2B64970500160F74 /* EntryEditorView.swift in Sources */,
 				48C243312B8A6A0200466839 /* View.swift in Sources */,
@@ -420,6 +438,8 @@
 				14B3FDF22B9665E00088BE07 /* TipsView.swift in Sources */,
 				48E549492B6059BB008184BA /* Item.swift in Sources */,
 				4890857A2B7D438500A607DF /* GoalPicker.swift in Sources */,
+				F0830F182BACB663001A349B /* FirstTreeBadgeView.swift in Sources */,
+				F04654FA2BB0E0A000D441DC /* FirstGrownTreeBadgeView.swift in Sources */,
 				143182C62B7AFC88003D71F9 /* GoalEditorView.swift in Sources */,
 				48E549452B6059BB008184BA /* MoneyTreeApp.swift in Sources */,
 				48CFD2E22B64B84800DB78F3 /* CardBackground.swift in Sources */,
