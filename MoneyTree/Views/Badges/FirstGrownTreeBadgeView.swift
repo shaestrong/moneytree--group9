@@ -9,34 +9,41 @@ import SwiftUI
 
 struct FirstGrownTreeBadgeView: View {
     var body: some View {
-        Section {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.yellow.opacity(0.5))
-                    .frame(width: 150, height: 150)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 15)
-                            .stroke(Color.yellow, lineWidth: 3)
-                    )
-                VStack(spacing: -10) {
-                    Text("FIRST GROWN TREE")
-                        .font(.caption)
-                        .foregroundColor(.black)
-                        .padding()
-                    
-                    Image(systemName: "tree.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 90, height: 90)
-                        .foregroundColor(.green)
-                }
+        ZStack {
+            Circle()
+                .fill(Color.yellow.opacity(0.5))
+                .frame(width: 80, height: 80)
+                .overlay(
+                    Circle()
+                        .stroke(Color.yellow, lineWidth: 3)
+                )
+            
+            VStack {
+                Image(systemName: "tree")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                    .padding(.horizontal)
+                    .padding(.top, 20)
+                    .padding(.bottom, 2)
+                
+                    .foregroundColor(.green)
+                
+                Text("Grew a\nTree")
+                    .font(.system(size: 10))
+                    .bold()
+                    .foregroundColor(.black)
+                    .padding(.bottom, 20)
+                    .padding(.horizontal, 15)
+                    .multilineTextAlignment(.center)
+                
             }
-            .padding()
         }
+        .padding()
+        .background(Color.clear)
     }
 }
 
 #Preview {
     FirstGrownTreeBadgeView()
 }
-

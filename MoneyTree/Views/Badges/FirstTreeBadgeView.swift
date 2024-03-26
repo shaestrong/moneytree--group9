@@ -9,32 +9,38 @@ import SwiftUI
 
 struct FirstTreeBadgeView: View {
     var body: some View {
-        Section {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.yellow.opacity(0.5))
-                    .frame(width: 150, height: 150)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 15)
-                            .stroke(Color.yellow, lineWidth: 3)
-                    )
+        ZStack {
+            Circle()
+                .fill(Color.yellow.opacity(0.5))
+                .frame(width: 80, height: 80)
+                .overlay(
+                    Circle()
+                        .stroke(Color.yellow, lineWidth: 3)
+                )
+            
+            VStack {
+                Image(systemName: "leaf")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                    .padding(.horizontal)
+                    .padding(.top)
+                    .padding(.bottom, 2)
                 
-                VStack(spacing: -10) {
-                    Text("FIRST TREE")
-                        .font(.caption)
-                        .foregroundColor(.black)
-                        .padding()
-                    
-                    Image(systemName: "tree")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 70, height: 70)
-                        .padding()
-                        .foregroundColor(.green)
-                }
+                    .foregroundColor(.green)
+                
+                Text("Planted a\nTree")
+                    .font(.system(size: 10))
+                    .bold()
+                    .foregroundColor(.black)
+                    .padding(.bottom)
+                    .padding(.horizontal)
+                    .multilineTextAlignment(.center)
+                
             }
-            .padding()
         }
+        .padding()
+        .background(Color.clear)
     }
 }
 
