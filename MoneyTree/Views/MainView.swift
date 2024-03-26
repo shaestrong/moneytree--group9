@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  MoneyTree
 //
 //  Created by Stanley Cao on 2024-01-23.
@@ -56,6 +56,12 @@ struct MainView: View {
                                     .frame(width: cardWidth, height: 150)
                                     .id("\(Date())")
                             }
+                            .onAppear {
+                                if !didAddFirstGoal {
+                                    didAddFirstGoal = true
+                                    didEarnFirstBadge = true // User earned the first badge when adding the first goal
+                                }
+                            }
                         }
                         
                         // Button to add a new goal
@@ -83,19 +89,6 @@ struct MainView: View {
                 .listRowBackground(Color.clear)
                 
                 TipsView()
-                
-                // Badges section header
-                if didEarnFirstBadge {
-                    Section(header: Text("Badges")) {
-                        FirstTreeBadgeView()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                } else if !goals.isEmpty {
-                    Section(header: Text("No Badges Earned Yet")) {
-                        Text("Add a goal to earn your first badge!")
-                            .foregroundColor(.gray)
-                    }
-                }
                 
                 // Entry list
                 ForEach(sections) { section in
@@ -126,12 +119,35 @@ struct MainView: View {
                         }
                     }
                 }
+                
+                
+                // Badges section header or FirstTreeBadgeView if earned
+                Section(header: Text("Badges")) {
+                    if didEarnFirstBadge {
+                        FirstTreeBadgeView()
+                    } else {
+                        if goals.isEmpty {
+                            Text("No badges earned yet! Add a goal to earn your first one!")
+                                .foregroundColor(.gray)
+                        } else {
+                            Text("Add a goal to earn your first badge!")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
             }
-            .navigationTitle("Spendings")
+            .navigationTitle("Spending")
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: resetState) {
+                        Text("Reset")
+                    }
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
+                
                 ToolbarItem {
                     Button(action: addEntry) {
                         Label("Add Item", systemImage: "plus")
@@ -145,11 +161,6 @@ struct MainView: View {
                 }
             }
         }
-        .onAppear {
-            if !goals.isEmpty {
-                didAddFirstGoal = true
-            }
-        }
     }
     
     private func addEntry() {
@@ -159,8 +170,16 @@ struct MainView: View {
     private func addGoal() {
         showingGoalSheet.toggle()
     }
-}
-
+    
+    private func resetState() {
+         didAddFirstGoal = false
+         didEarnFirstBadge = false
+         // Delete all goals
+         for goal in goals {
+             modelContext.delete(goal)
+         }
+     }
+ }
 
 #Preview {
     var sharedModelContainer: ModelContainer = {
@@ -178,7 +197,6 @@ struct MainView: View {
         }
     }()
     
-   return MainView()
+    return MainView()
         .modelContainer(sharedModelContainer)
-
 }
