@@ -2,6 +2,12 @@ import SwiftUI
 import SwiftData
 import Lottie
 
+extension Date {
+    var startOfDay: Date? {
+        return Calendar.current.startOfDay(for: self)
+    }
+}
+
 struct TreeView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var showTreeForm = false
@@ -12,7 +18,12 @@ struct TreeView: View {
     @Query private var goals: [Goal]
     
     private func getImageTree(goal: Goal) -> some View {
-        switch goal.progress {
+        
+        let consecutiveDays = findConsecutiveDays(entries: goal.entries)
+        
+        let growthMultiplier: Double = consecutiveDays >= 3 ? 1.5 : 1.0
+        
+        switch goal.progress * growthMultiplier {
         case 0..<0.4:
             return LottieView(animation: .named("Planting-1"))
                 .currentProgress(1)
@@ -36,6 +47,33 @@ struct TreeView: View {
         }
     }
     
+    private func findConsecutiveDays(entries: [Entry]) -> Int {
+        let sortedEntries = entries.sorted(by: { $0.date < $1.date })
+        var consecutiveDays = 1
+        var previousDate: Date?
+
+        for entry in sortedEntries {
+            guard let currentDate = entry.date.startOfDay else { continue }
+    
+            if let prevDate = previousDate {
+                if Calendar.current.isDate(prevDate, inSameDayAs: currentDate) {
+                    continue
+                }
+                
+                if let days = Calendar.current.dateComponents([.day], from: prevDate, to: currentDate).day, days == 1 {
+                    consecutiveDays += 1
+                    print(consecutiveDays)
+                } else {
+                    consecutiveDays = 1
+                }
+            }
+            
+            previousDate = currentDate
+        }
+        
+        return consecutiveDays
+    }
+    
     var body: some View {
         VStack {
             if !goals.isEmpty {
@@ -54,6 +92,23 @@ struct TreeView: View {
                                     .frame(width: 150, height: 150)
                                 getImageTree(goal: goal)
                                     .id("\(Date())")
+                                
+                                let consecutiveDays = findConsecutiveDays(entries: goal.entries)
+                                
+                                if(consecutiveDays >= 3){
+                                    ZStack() {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .fill(Color.yellow)
+                                            .frame(width: 90, height: 25)
+                                        
+                                        Text("1.5x Growth")
+                                            .font(.caption)
+                                            .foregroundColor(.black)
+                                            .padding(.horizontal, 8)
+                                            .bold()
+                                    }
+                                    .offset(x: -20, y: -45)
+                                }
                                 
                                 Button(action: {
                                     selectedTree = goal
