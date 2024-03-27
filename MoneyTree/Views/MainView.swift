@@ -59,7 +59,7 @@ struct MainView: View {
                             .onAppear {
                                 if !didAddFirstGoal {
                                     didAddFirstGoal = true
-                                    didEarnFirstBadge = true // User earned the first badge when adding the first goal
+                                    checkGoalReached() // Check if the badge should be earned when the first goal is added
                                 }
                             }
                         }
@@ -119,31 +119,10 @@ struct MainView: View {
                         }
                     }
                 }
-                
-                
-                // Badges section header or FirstTreeBadgeView if earned
-                Section(header: Text("Badges")) {
-                    if didEarnFirstBadge {
-                        FirstTreeBadgeView()
-                    } else {
-                        if goals.isEmpty {
-                            Text("No badges earned yet! Add a goal to earn your first one!")
-                                .foregroundColor(.gray)
-                        } else {
-                            Text("Add a goal to earn your first badge!")
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
             }
             .navigationTitle("Spending")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-// For debug, pls comment out in production
-//                    Button(action: resetState) {
-//                        Text("Reset")
-//                    }
-                    
                     NavigationLink(destination: Settings()) {
                         Image(systemName: "gear")
                     }
@@ -165,8 +144,8 @@ struct MainView: View {
                     })
                 }
             }
-        }.onAppear {
-            // if doesn't have the key and current mode is dark, set the key to true
+        }
+        .onAppear {
             if UserDefaults.standard.object(forKey: "isDarkMode") == nil {
                 UserDefaults.standard.set(UIScreen.main.traitCollection.userInterfaceStyle == .dark, forKey: "isDarkMode")
             }
@@ -187,15 +166,37 @@ struct MainView: View {
         showingGoalSheet.toggle()
     }
     
-    private func resetState() {
-         didAddFirstGoal = false
-         didEarnFirstBadge = false
-         // Delete all goals
-         for goal in goals {
-             modelContext.delete(goal)
-         }
-     }
- }
+    private func checkGoalReached() {
+        // Iterate through goals to check if any goal has been reached
+        for goal in goals {
+            if goal.progress >= 1.0 {
+                didEarnFirstBadge = true
+                break
+            }
+        }
+    }
+}
+
+#Preview {
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            Entry.self,
+            Goal.self
+        ])
+        
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+    
+    return MainView()
+        .modelContainer(sharedModelContainer)
+}
+
 
 #Preview {
     var sharedModelContainer: ModelContainer = {

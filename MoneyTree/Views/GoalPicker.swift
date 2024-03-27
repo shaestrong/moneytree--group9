@@ -33,24 +33,25 @@ struct GoalPicker: View {
                 }
             }
             
-            // remove the goal
+            // Remove the association with the goal
             Button("Remove contribution", role: .destructive) {
                 showingAlert.toggle()
             }
-        }.navigationTitle(entry.goal != nil ? "Change a Goal" : "Select a Goal")
-         .navigationBarTitleDisplayMode(.inline)
-         .toolbar(.hidden, for: .tabBar)
-         .alert(isPresented: $showingAlert) {
-             Alert(
-                 title: Text("Remove Contribution"),
-                 message: Text("Are you sure you want to remove this contribution?"),
-                 primaryButton: .destructive(Text("Remove")) {
-                     entry.goal = nil
-                     dismiss()
-                 },
-                 secondaryButton: .cancel()
-             )
-         }
+        }
+        .navigationTitle(entry.goal != nil ? "Change a Goal" : "Select a Goal") // Set title based on whether an association exists
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .tabBar)
+        .alert(isPresented: $showingAlert) {
+            Alert(
+                title: Text("Remove Contribution"),
+                message: Text("Are you sure you want to remove this contribution?"),
+                primaryButton: .destructive(Text("Remove")) {
+                    entry.goal = nil
+                    dismiss()
+                },
+                secondaryButton: .cancel()
+            )
+        }
     }
 }
 

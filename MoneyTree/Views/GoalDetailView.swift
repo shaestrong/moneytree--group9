@@ -19,7 +19,15 @@ struct GoalDetailView: View {
     @SectionedQuery<String, Entry>
     private var sections: SectionedResults<String, Entry>
     
-    private func getMotivationString () -> String {
+    private var fTarget: String {
+        return String(format: "%.2f", goal.target)
+    }
+    
+    private var fCurrent: String {
+        return String(format: "%.2f", goal.current)
+    }
+    
+    private func getMotivationString() -> String {
         switch true {
         case goal.progress < 0.4:
             return "You can do it!"
@@ -32,8 +40,7 @@ struct GoalDetailView: View {
         }
     }
     
-    
-    init (goal: Goal) {
+    init(goal: Goal) {
         self.goal = goal
         let id = goal.persistentModelID
         let filter = #Predicate<Entry> { entry in
@@ -41,7 +48,7 @@ struct GoalDetailView: View {
         }
         
         _sections = SectionedQuery(\.day, filter: filter,
-                                    sort: [SortDescriptor(\.date, order: .reverse)])
+                                   sort: [SortDescriptor(\.date, order: .reverse)])
     }
     
     private var formattedDate: String {
@@ -50,19 +57,25 @@ struct GoalDetailView: View {
         return dateFormatter.string(from: goal.deadline)
     }
     
+    private var isGoalCompleted: Bool {
+        return goal.progress >= 1.0
+    }
+    
     var body: some View {
-        
-        let fCurrent = goal.current.formatted(.currency(code: "CAD"))
-        let fTarget = goal.target.formatted(.currency(code: "CAD"))
-        
-        return GeometryReader { geometry in
+        GeometryReader { geometry in
             List {
                 Section {
                     VStack (alignment: .center) {
-                        LottieView(animation: .named("Planting-1"))
-                            .looping()
-                            .frame(width: geometry.size.width / 2)
-                            .padding(.bottom, 48)
+                        if isGoalCompleted {
+                            FirstGrownTreeBadgeView()
+                                .frame(width: geometry.size.width / 2)
+                                .padding(.bottom, 48)
+                        } else {
+                            LottieView(animation: .named("Planting-1"))
+                                .looping()
+                                .frame(width: geometry.size.width / 2)
+                                .padding(.bottom, 48)
+                        }
                         
                         Text(goal.name)
                             .font(.title2)
@@ -78,12 +91,10 @@ struct GoalDetailView: View {
                                 .fontWeight(.medium)
                         }.padding(.bottom, 24)
                         
-                        
-                        
                         VStack (alignment: .center) {
-                            Text(getMotivationString()).font(.headline)
+                            Text(getMotivationString())
+                                .font(.headline)
                                 .padding(.bottom, 4)
-                            
                             
                             ProgressView(value: goal.progress)
                                 .progressViewStyle(RoundedRectProgressViewStyle())
@@ -93,18 +104,17 @@ struct GoalDetailView: View {
                                         .font(.caption2)
                                         .fontWeight(.bold)
                                 }
-                            
+                                .padding()
+                                .cornerRadius(12)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .foregroundColor(.green)
+                                        .opacity(0.2)
+                                }
+                                .padding()
                         }
-                        .padding()
-                        .cornerRadius(12)
-                        .background {
-                            RoundedRectangle(cornerRadius: 12)
-                                .foregroundColor(.green)
-                                .opacity(0.2)
-                        }
-                        .padding()
+                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                     }
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
                 
                 ForEach(sections) { section in
@@ -122,12 +132,22 @@ struct GoalDetailView: View {
                     }
                 }
             }
-        }.navigationTitle(goal.name)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar(.hidden, for: .tabBar)
+        }
+        .navigationTitle(goal.name)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                // If needed, add additional toolbar items here
+                Spacer()
+            }
+        }
     }
 }
 
-#Preview {
-    GoalDetailView(goal: Goal(name: "Test Goal long long long", target: 100, deadline: Date()))
+#if DEBUG
+struct GoalDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        GoalDetailView(goal: Goal(name: "Test Goal", target: 100, deadline: Date()))
+    }
 }
+#endif
