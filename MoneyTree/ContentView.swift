@@ -11,21 +11,21 @@ import SwiftData
 struct ContentView: View {
     
     var body: some View {
-        TabView {
-            MainView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-            
-            StatisticView(month: Date.now)
-                .tabItem {
-                    Label("Statistics", systemImage: "chart.bar.xaxis")
-                }
-            TreeView()
-                .tabItem {
-                    Label("Trees", systemImage: "tree")
-                }
-        }
+            TabView {
+                MainView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                
+                StatisticView(month: Date.now)
+                    .tabItem {
+                        Label("Statistics", systemImage: "chart.bar.xaxis")
+                    }
+                TreeView()
+                    .tabItem {
+                        Label("Trees", systemImage: "tree")
+                    }
+            }
     }
 }
 

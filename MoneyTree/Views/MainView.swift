@@ -139,8 +139,13 @@ struct MainView: View {
             .navigationTitle("Spending")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: resetState) {
-                        Text("Reset")
+// For debug, pls comment out in production
+//                    Button(action: resetState) {
+//                        Text("Reset")
+//                    }
+                    
+                    NavigationLink(destination: Settings()) {
+                        Image(systemName: "gear")
                     }
                 }
                 
@@ -159,6 +164,17 @@ struct MainView: View {
                         .presentationDetents([.medium])
                     })
                 }
+            }
+        }.onAppear {
+            // if doesn't have the key and current mode is dark, set the key to true
+            if UserDefaults.standard.object(forKey: "isDarkMode") == nil {
+                UserDefaults.standard.set(UIScreen.main.traitCollection.userInterfaceStyle == .dark, forKey: "isDarkMode")
+            }
+            
+            if UserDefaults.standard.bool(forKey: "isDarkMode") {
+                UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
+            } else {
+                UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .light
             }
         }
     }

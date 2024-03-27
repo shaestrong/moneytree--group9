@@ -281,8 +281,24 @@ FILES ARE PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED
 </html>
 """
     
+    @State var isDarkMode = false
+    
     var body: some View {
         List {
+            Section ("Display Mode") {
+                Toggle("Dark Mode", isOn: $isDarkMode)
+                    .onChange(of: isDarkMode) { _ in
+                        UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode")
+                        
+                        if isDarkMode {
+                            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
+                        } else {
+                            UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .light
+                        }
+                    }
+            }.onAppear {
+                isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+            }
             Section ("License") {
                 Text("Open Source License")
                     .onTapGesture {
@@ -300,6 +316,9 @@ FILES ARE PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED
                 }
             }
         }
+        .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .tabBar)
     }
 }
 
