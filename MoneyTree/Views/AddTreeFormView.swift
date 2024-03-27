@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AddTreeFormView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.colorScheme) var colorScheme
     
     @Binding var isPresented: Bool
     
@@ -41,6 +42,7 @@ struct AddTreeFormView: View {
                     VStack{
                         TextField("Tree Name", text: $treeName)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
                         Text("This will help you remember what your goal is about.")
                             .foregroundColor(.gray)
                             .font(.caption)
@@ -54,6 +56,7 @@ struct AddTreeFormView: View {
                         TextField("Savings Goal", value: $goalTarget, format: .currency(code: "CAD"))
                             .keyboardType(.numberPad)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
                         Text("This is the amount of money you want to save. It can be for a toy, a game, or anything else you like!")
                         .foregroundColor(.gray)
                         .font(.caption)
@@ -92,9 +95,9 @@ struct AddTreeFormView: View {
                 .padding(.horizontal, 20)
             }
             .padding()
-            .background(Color.white)
+            .background(colorScheme == .dark ? .black : .white)
             .cornerRadius(20)
-            .shadow(radius: 10)
+            .padding()
             .onAppear {
                 if let goal = goal {
                     treeName = goal.name

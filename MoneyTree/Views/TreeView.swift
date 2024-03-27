@@ -86,10 +86,7 @@ struct TreeView: View {
                     ForEach(goals) { goal in
                         VStack {
                             ZStack {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .fill(Color.white)
-                                    .shadow(radius: 5)
-                                    .frame(width: 150, height: 150)
+
                                 getImageTree(goal: goal)
                                     .id("\(Date())")
                                 
@@ -119,8 +116,14 @@ struct TreeView: View {
                                         .padding(8)
                                 }
                                 .buttonStyle(PlainButtonStyle())
-                                .offset(x: 45, y: -45)
+                                .offset(x: 55, y: -30)
                             }
+                            .overlay(
+                               RoundedRectangle(cornerRadius: 20)
+                                .size(width: 150, height: 150)
+                                .stroke(Color.gray, lineWidth: 1)
+                            )
+                            .frame(width: 150, height: 150)
                             .padding(.bottom, 20)
                             
                             Text(goal.name)
@@ -175,7 +178,6 @@ struct TreeView: View {
                         .font(.headline)
                         .padding()
                         .foregroundColor(.green)
-                        .background(Color.white)
                         .cornerRadius(10)
                         .shadow(radius: 3)
                 }
@@ -191,7 +193,6 @@ struct TreeView: View {
                         .font(.headline)
                         .padding()
                         .foregroundColor(.green)
-                        .background(Color.white)
                         .cornerRadius(10)
                         .shadow(radius: 3)
                 }
