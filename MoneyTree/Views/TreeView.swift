@@ -104,7 +104,7 @@ struct TreeView: View {
                                             .padding(.horizontal, 8)
                                             .bold()
                                     }
-                                    .offset(x: -20, y: -45)
+                                    .offset(x: -20, y: -30)
                                 }
                                 
                                 Button(action: {
