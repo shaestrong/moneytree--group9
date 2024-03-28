@@ -10,6 +10,10 @@
 		143182C62B7AFC88003D71F9 /* GoalEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143182C52B7AFC88003D71F9 /* GoalEditorView.swift */; };
 		1437F1B52B7B516B00B4D6A6 /* AddTreeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437F1B42B7B516B00B4D6A6 /* AddTreeFormView.swift */; };
 		1437F1B72B7B518700B4D6A6 /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437F1B62B7B518700B4D6A6 /* TreeView.swift */; };
+		14A4DE7C2BB4E7D800F0346C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A4DE7B2BB4E7D800F0346C /* Badge.swift */; };
+		14A4DE7E2BB4E84E00F0346C /* BadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A4DE7D2BB4E84D00F0346C /* BadgesView.swift */; };
+		14A4DE802BB4E94A00F0346C /* BadgeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A4DE7F2BB4E94A00F0346C /* BadgeStore.swift */; };
+		14A4DE822BB4EB1D00F0346C /* BadgesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A4DE812BB4EB1D00F0346C /* BadgesViewModel.swift */; };
 		14B3FDF02B96591D0088BE07 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B3FDEF2B96591C0088BE07 /* Tips.swift */; };
 		14B3FDF22B9665E00088BE07 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B3FDF12B9665E00088BE07 /* TipsView.swift */; };
 		4847D11D2B64970500160F74 /* EntryEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4847D11C2B64970500160F74 /* EntryEditorView.swift */; };
@@ -66,6 +70,10 @@
 		143182C52B7AFC88003D71F9 /* GoalEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditorView.swift; sourceTree = "<group>"; };
 		1437F1B42B7B516B00B4D6A6 /* AddTreeFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTreeFormView.swift; sourceTree = "<group>"; };
 		1437F1B62B7B518700B4D6A6 /* TreeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeView.swift; sourceTree = "<group>"; };
+		14A4DE7B2BB4E7D800F0346C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		14A4DE7D2BB4E84D00F0346C /* BadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesView.swift; sourceTree = "<group>"; };
+		14A4DE7F2BB4E94A00F0346C /* BadgeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeStore.swift; sourceTree = "<group>"; };
+		14A4DE812BB4EB1D00F0346C /* BadgesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesViewModel.swift; sourceTree = "<group>"; };
 		14B3FDEF2B96591C0088BE07 /* Tips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		14B3FDF12B9665E00088BE07 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
 		4847D11C2B64970500160F74 /* EntryEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryEditorView.swift; sourceTree = "<group>"; };
@@ -136,6 +144,8 @@
 				48E549482B6059BB008184BA /* Item.swift */,
 				4847D11E2B649EA400160F74 /* Entry.swift */,
 				48CFD2E32B64BB4200DB78F3 /* Goal.swift */,
+				14A4DE7B2BB4E7D800F0346C /* Badge.swift */,
+				14A4DE7F2BB4E94A00F0346C /* BadgeStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -155,6 +165,8 @@
 				48FDF9D52B7D5D4700A87383 /* GoalDetailView.swift */,
 				48C243352B8A77DD00466839 /* Settings.swift */,
 				14B3FDF12B9665E00088BE07 /* TipsView.swift */,
+				14A4DE7D2BB4E84D00F0346C /* BadgesView.swift */,
+				14A4DE812BB4EB1D00F0346C /* BadgesViewModel.swift */,
 				F0830F162BACB63E001A349B /* Badges */,
 			);
 			path = Views;
@@ -426,9 +438,11 @@
 				48E549472B6059BB008184BA /* ContentView.swift in Sources */,
 				4847D11D2B64970500160F74 /* EntryEditorView.swift in Sources */,
 				48C243312B8A6A0200466839 /* View.swift in Sources */,
+				14A4DE822BB4EB1D00F0346C /* BadgesViewModel.swift in Sources */,
 				48FDF9D62B7D5D4700A87383 /* GoalDetailView.swift in Sources */,
 				48CFD2E62B656E8D00DB78F3 /* EntryDetailView.swift in Sources */,
 				48CFD2DF2B64B35A00DB78F3 /* GoalProgress.swift in Sources */,
+				14A4DE7C2BB4E7D800F0346C /* Badge.swift in Sources */,
 				4890857C2B7D43AC00A607DF /* GoalListItem.swift in Sources */,
 				14B3FDF02B96591D0088BE07 /* Tips.swift in Sources */,
 				489085752B70643E00A607DF /* StatisticView.swift in Sources */,
@@ -436,9 +450,11 @@
 				489085702B70610200A607DF /* MainView.swift in Sources */,
 				48C243362B8A77DD00466839 /* Settings.swift in Sources */,
 				14B3FDF22B9665E00088BE07 /* TipsView.swift in Sources */,
+				14A4DE802BB4E94A00F0346C /* BadgeStore.swift in Sources */,
 				48E549492B6059BB008184BA /* Item.swift in Sources */,
 				4890857A2B7D438500A607DF /* GoalPicker.swift in Sources */,
 				F0830F182BACB663001A349B /* FirstTreeBadgeView.swift in Sources */,
+				14A4DE7E2BB4E84E00F0346C /* BadgesView.swift in Sources */,
 				F04654FA2BB0E0A000D441DC /* FirstGrownTreeBadgeView.swift in Sources */,
 				143182C62B7AFC88003D71F9 /* GoalEditorView.swift in Sources */,
 				48E549452B6059BB008184BA /* MoneyTreeApp.swift in Sources */,

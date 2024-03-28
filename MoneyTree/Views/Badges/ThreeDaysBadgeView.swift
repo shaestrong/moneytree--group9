@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ThreeDaysBadgeView: View {
-    var savedForThreeDays: Bool // Indicates whether the user has saved for three days
+    //var savedForThreeDays: Bool // Indicates whether the user has saved for three days
     
     var body: some View {
         Section {
@@ -40,6 +40,6 @@ struct ThreeDaysBadgeView: View {
 }
 
 #Preview {
-    ThreeDaysBadgeView(savedForThreeDays: true)
+    ThreeDaysBadgeView()
 }
 

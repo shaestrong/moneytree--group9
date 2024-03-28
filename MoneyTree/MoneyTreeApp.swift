@@ -27,7 +27,7 @@ struct MoneyTreeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: BadgesViewModel())
         }
         .modelContainer(sharedModelContainer)
     }

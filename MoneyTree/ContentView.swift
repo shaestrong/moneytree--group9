@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @State var viewModel:BadgesViewModel
     
     var body: some View {
             TabView {
@@ -24,6 +25,10 @@ struct ContentView: View {
                 TreeView()
                     .tabItem {
                         Label("Trees", systemImage: "tree")
+                    }
+                BadgesView(viewModel: viewModel)
+                    .tabItem {
+                        Label("Achievements", systemImage: "trophy")
                     }
             }
     }
@@ -45,6 +50,6 @@ struct ContentView: View {
         }
     }()
     
-   return ContentView()
+   return ContentView(viewModel: BadgesViewModel())
         .modelContainer(sharedModelContainer)
 }
