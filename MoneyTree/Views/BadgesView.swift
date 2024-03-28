@@ -1,22 +1,26 @@
-//
-//  BadgesView.swift
-//  MoneyTree
-//
-//  Created by Stephany Ceron on 27/03/24.
-//
-
 import SwiftUI
 import SwiftData
 
 struct BadgesView: View {
-    @State var viewModel:BadgesViewModel
+    @State var viewModel: BadgesViewModel
     @Query private var goals: [Goal]
     
     var body: some View {
         VStack {
-            ForEach(viewModel.listEarnedBadges){ badge in
-                badge.view
+            Text("Achievements")
+                .font(.title)
+                .padding()
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(viewModel.listEarnedBadges) { badge in
+                        badge.view
+                    }
+                }
+                
+                .padding(.horizontal)
             }
+            Spacer()
         }
         .onAppear {
             viewModel.checkAchievements(goals: goals)

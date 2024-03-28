@@ -66,16 +66,10 @@ struct GoalDetailView: View {
             List {
                 Section {
                     VStack (alignment: .center) {
-                        if isGoalCompleted {
-                            FirstGrownTreeBadgeView()
-                                .frame(width: geometry.size.width / 2)
-                                .padding(.bottom, 48)
-                        } else {
-                            LottieView(animation: .named("Planting-1"))
-                                .looping()
-                                .frame(width: geometry.size.width / 2)
-                                .padding(.bottom, 48)
-                        }
+                        LottieView(animation: .named("Planting-1"))
+                            .looping()
+                            .frame(width: geometry.size.width / 2)
+                            .padding(.bottom, 48)
                         
                         Text(goal.name)
                             .font(.title2)
@@ -144,10 +138,8 @@ struct GoalDetailView: View {
     }
 }
 
-#if DEBUG
 struct GoalDetailView_Previews: PreviewProvider {
     static var previews: some View {
         GoalDetailView(goal: Goal(name: "Test Goal", target: 100, deadline: Date()))
     }
 }
-#endif
