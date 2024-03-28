@@ -48,26 +48,26 @@ final class BadgesViewModel {
     }
     
     private func markAchievementAsEarned(name: String) {
-            if let badgeIndex = store.badges.firstIndex(where: { $0.name == name }) {
-                store.badges[badgeIndex].isEarned = true
-            }
+        if let badgeIndex = store.badges.firstIndex(where: { $0.name == name }) {
+            store.badges[badgeIndex].isEarned = true
         }
+    }
     
     func checkAchievements(goals: [Goal]) {
-            for goal in goals {
-                // Check for three consecutive savings days
-                let consecutiveDays = findConsecutiveDays(for: goal.entries)
-                
-                if consecutiveDays >= 3 {
-                    markAchievementAsEarned(name: "Three Consecutive Savings Days")
-                }
-                
-                if goal.progress >= 1.0 {
-                    markAchievementAsEarned(name: "First Grown Tree")
-                }
+        for goal in goals {
+            // Check for three consecutive savings days
+            let consecutiveDays = findConsecutiveDays(for: goal.entries)
+            
+            if consecutiveDays >= 3 {
+                markAchievementAsEarned(name: "Three Consecutive Savings Days")
             }
-            if goals.count > 0 {
-                markAchievementAsEarned(name: "First Tree")
+            
+            if goal.progress >= 1.0 {
+                markAchievementAsEarned(name: "First Grown Tree")
             }
         }
+        if goals.count > 0 {
+            markAchievementAsEarned(name: "First Tree")
+        }
+    }
 }
